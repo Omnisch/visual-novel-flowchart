@@ -17,7 +17,8 @@ namespace Omnis.BranchTracker
             get => description;
             set
             {
-                description = value;
+                if (value.Length > 50) description = value.Substring(0, 50);
+                else description = value;
                 display.text = description;
             }
         }

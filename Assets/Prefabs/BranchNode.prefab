@@ -128,8 +128,8 @@ MonoBehaviour:
   parentLinks: []
   childLinks: []
   childOffset: {x: 0.5, y: -2.8, z: 0}
-  inOffset: {x: 0, y: 1, z: 0}
-  outOffset: {x: 0, y: -1, z: 0}
+  inOffset: {fileID: 5919683609208859846}
+  outOffset: {fileID: 9141969365826295328}
   display: {fileID: 1430500277223284620}
   description: 
 --- !u!1 &911485168890973070
@@ -273,7 +273,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 4, y: 2}
+  m_SizeDelta: {x: 3.8, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &9203502687597699098
 MeshRenderer:
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ...
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
   m_sharedMaterial: {fileID: 1566947655884223597, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
@@ -364,8 +364,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

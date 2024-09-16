@@ -21,7 +21,6 @@ namespace Omnis.BranchTracker
             set
             {
                 activeNode = value;
-                if (activeNode == null) return;
                 nodePriority.Prioritize(activeNode);
                 UpdateInputFieldText();
             }

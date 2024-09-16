@@ -21,8 +21,8 @@ namespace Omnis.BranchTracker
             if (doNotUpdatePositions) return;
 
             Vector3[] positions = {
-                VectorTweak.xyn(fromNode.transform.position + fromNode.outOffset, -100f),
-                VectorTweak.xyn(toNode.transform.position + toNode.inOffset, -100f),
+                VectorTweak.xyn(fromNode.transform.position + fromNode.outOffset.localPosition, -100f),
+                VectorTweak.xyn(toNode.transform.position + toNode.inOffset.localPosition, -100f),
             };
             lineRenderer.SetPositions(positions);
         }

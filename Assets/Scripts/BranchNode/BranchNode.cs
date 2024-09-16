@@ -13,8 +13,8 @@ namespace Omnis.BranchTracker
         public List<NodeLink> childLinks;
         [Header("Offsets")]
         public Vector3 childOffset;
-        public Vector3 inOffset;
-        public Vector3 outOffset;
+        public Transform inOffset;
+        public Transform outOffset;
         #endregion
 
         #region Interfaces

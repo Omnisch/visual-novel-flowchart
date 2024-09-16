@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
 
 namespace Omnis.BranchTracker
@@ -15,11 +12,11 @@ namespace Omnis.BranchTracker
         #endregion
 
         #region Interfaces
-        public void UpdateActiveNodeText() => ActiveNode.Description = inputField.text;
+        public void UpdateActiveNodeText() { if (ActiveNode) ActiveNode.Description = inputField.text; }
         #endregion
 
         #region Functions
-        private void UpdateInputFieldText() => inputField.text = ActiveNode.Description;
+        private void UpdateInputFieldText() { if (ActiveNode) inputField.text = ActiveNode.Description; }
         #endregion
     }
 }
