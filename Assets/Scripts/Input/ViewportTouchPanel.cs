@@ -5,11 +5,12 @@ namespace Omnis
 {
     // Add this script to a collider binding to the cam that you want to control.
     [RequireComponent(typeof(Collider))]
-    public class ViewportTouchPanel : PointerBase
+    public class ViewportTouchPanel : InteractBase
     {
         #region Serialized Fields
         [SerializeField] private Camera cam;
         [SerializeField] private float dragScale = 1f;
+        public Vector2 scrollLimit;
         public bool scrollControl;
         public bool dragControl;
         #endregion
@@ -24,7 +25,7 @@ namespace Omnis
             get => scrollScale;
             set
             {
-                scrollScale = Mathf.Clamp(value, 3f, 10f);
+                scrollScale = Mathf.Clamp(value, scrollLimit.x, scrollLimit.y);
                 cam.orthographicSize = scrollScale;
             }
         }

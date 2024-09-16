@@ -274,8 +274,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: 1ce1e5313be86d1468ebcc0a43b77c4a, type: 2}
-  root: {fileID: 21517741}
   nodePriority: {fileID: 481572234}
+  root: {fileID: 21517741}
+  inputField: {fileID: 508238892}
 --- !u!114 &481572233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,7 +334,7 @@ GameObject:
   - component: {fileID: 508238893}
   - component: {fileID: 508238892}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,7 +439,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 481572232}
+        m_TargetAssemblyTypeName: Omnis.BranchTracker.GameManager, Assembly-CSharp
+        m_MethodName: UpdateActiveNodeText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -450,7 +463,7 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_GlobalFontAsset: {fileID: 11400000, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
@@ -637,6 +650,7 @@ MonoBehaviour:
   opaque: 0
   cam: {fileID: 963194227}
   dragScale: 1
+  scrollLimit: {x: 3, y: 20}
   scrollControl: 1
   dragControl: 0
 --- !u!65 &1409512437
@@ -658,7 +672,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 20, z: 1}
+  m_Size: {x: 30, y: 40, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1469537361
 GameObject:
@@ -909,6 +923,7 @@ MonoBehaviour:
   opaque: 1
   cam: {fileID: 963194227}
   dragScale: 1
+  scrollLimit: {x: 0, y: 0}
   scrollControl: 0
   dragControl: 1
 --- !u!65 &1664690120
@@ -930,7 +945,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 20, z: 1}
+  m_Size: {x: 30, y: 40, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1684842102
 GameObject:
@@ -991,8 +1006,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
+  m_sharedMaterial: {fileID: 1566947655884223597, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1224,8 +1239,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
+  m_sharedMaterial: {fileID: 1566947655884223597, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1311,6 +1326,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Root Node
       objectReference: {fileID: 0}
+    - target: {fileID: 911485168890973070, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430500277223284620, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
+      propertyPath: m_text
+      value: Start
+      objectReference: {fileID: 0}
     - target: {fileID: 3904981871580121079, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1357,7 +1380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8298234888022466152, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
       propertyPath: description
-      value: the root node
+      value: Start
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

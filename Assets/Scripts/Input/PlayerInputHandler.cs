@@ -32,7 +32,7 @@ namespace Omnis
             foreach (var hit in PointerHits)
             {
                 hit.SendMessage(methodName, value, SendMessageOptions.DontRequireReceiver);
-                if (hit.GetComponent<PointerBase>() && hit.GetComponent<PointerBase>().opaque) break;
+                if (hit.GetComponent<InteractBase>() && hit.GetComponent<InteractBase>().opaque) break;
             }
         }
         #endregion
@@ -74,13 +74,13 @@ namespace Omnis
                 if (hit)
                 {
                     hit.SendMessage("OnPointerExit", options: SendMessageOptions.DontRequireReceiver);
-                    if (hit.GetComponent<PointerBase>() && hit.GetComponent<PointerBase>().opaque) break;
+                    if (hit.GetComponent<InteractBase>() && hit.GetComponent<InteractBase>().opaque) break;
                 }
             foreach (var hit in newHits.Except(PointerHits).ToList())
                 if (hit)
                 {
                     hit.SendMessage("OnPointerEnter", options: SendMessageOptions.DontRequireReceiver);
-                    if (hit.GetComponent<PointerBase>() && hit.GetComponent<PointerBase>().opaque) break;
+                    if (hit.GetComponent<InteractBase>() && hit.GetComponent<InteractBase>().opaque) break;
                 }
             PointerHits = newHits;
         }

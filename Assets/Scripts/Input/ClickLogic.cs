@@ -4,7 +4,7 @@ using UnityEngine.Events;
 namespace Omnis
 {
     [RequireComponent(typeof(Collider))]
-    public class ClickLogic : PointerBase
+    public class ClickLogic : InteractBase
     {
         #region Serialized Fields
         public UnityEvent enterCallback;

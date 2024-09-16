@@ -5,14 +5,14 @@ using UnityEngine.InputSystem;
 
 namespace Omnis.BranchTracker
 {
-    public partial class BranchNode : PointerBase
+    public partial class BranchNode : InteractBase
     {
         #region Serialized Fields
+        [Header("Links")]
         public List<NodeLink> parentLinks;
         public List<NodeLink> childLinks;
-        [SerializeField] private string savePath;
-        [SerializeField] private string description;
-        [Space]
+        [Header("Offsets")]
+        public Vector3 childOffset;
         public Vector3 inOffset;
         public Vector3 outOffset;
         #endregion
@@ -20,7 +20,7 @@ namespace Omnis.BranchTracker
         #region Interfaces
         public void CreateChild()
         {
-            Vector3 childPos = transform.position + new Vector3(0.5f, -1f, 0f);
+            Vector3 childPos = transform.position + childOffset;
             var child = Instantiate(GameManager.Instance.gameSettings.nodePrefab, childPos, Quaternion.identity).GetComponent<BranchNode>();
             CreateChildLink(child);
             GameManager.Instance.nodePriority.Prioritize(child);
@@ -48,17 +48,6 @@ namespace Omnis.BranchTracker
         {
             parentLinks.ForEach(link => link.UpdatePositions());
             childLinks.ForEach(link => link.UpdatePositions());
-        }
-        #endregion
-
-        #region Unity Methods
-        private void Update()
-        {
-            if (isPressed)
-            {
-                transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + pointerOffset;
-                UpdateLinks();
-            }
         }
         #endregion
     }
