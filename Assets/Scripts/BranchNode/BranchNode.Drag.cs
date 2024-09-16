@@ -24,13 +24,5 @@ namespace Omnis.BranchTracker
             }
         }
         #endregion
-
-        #region Unity Methods
-        private void Update()
-        {
-            if (isPressed)
-                transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + pointerOffset;
-        }
-        #endregion
     }
 }

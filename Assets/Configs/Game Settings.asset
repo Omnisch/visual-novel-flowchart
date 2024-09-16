@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5925e3ddc0068ad45b8e3cb6d4b7671b, type: 3}
   m_Name: Game Settings
   m_EditorClassIdentifier: 
-  prefab: {fileID: 490290849265041124, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
+  nodePrefab: {fileID: 490290849265041124, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
+  linkPrefab: {fileID: 19799689446025064, guid: 1dbc788a25851894eaec96af39f3727f, type: 3}

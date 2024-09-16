@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Omnis.BranchTracker
@@ -7,6 +6,7 @@ namespace Omnis.BranchTracker
     public class GameSettings : ScriptableObject
     {
         [Header("Node")]
-        public GameObject prefab;
+        public GameObject nodePrefab;
+        public GameObject linkPrefab;
     }
 }
