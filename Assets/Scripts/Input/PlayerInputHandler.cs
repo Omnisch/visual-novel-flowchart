@@ -27,6 +27,14 @@ namespace Omnis
 
         #region Functions
         private void FlushInput() {}
+        private void ForwardMessage(string methodName, object value = null)
+        {
+            foreach (var hit in PointerHits)
+            {
+                hit.SendMessage(methodName, value, SendMessageOptions.DontRequireReceiver);
+                if (hit.GetComponent<PointerBase>() && hit.GetComponent<PointerBase>().opaque) break;
+            }
+        }
         #endregion
 
         #region Unity Methods
@@ -51,36 +59,31 @@ namespace Omnis
         #endregion
 
         #region Handlers
-        protected void OnInteract() => PointerHits.ForEach(hit => hit.SendMessage("OnInteract", options: SendMessageOptions.DontRequireReceiver));
-
-        protected void OnPress() => PointerHits.ForEach(hit => hit.SendMessage("OnPress", options: SendMessageOptions.DontRequireReceiver));
-
-        protected void OnRelease() => PointerHits.ForEach(hit => hit.SendMessage("OnRelease", options: SendMessageOptions.DontRequireReceiver));
-
-        protected void OnScroll(InputValue value) => PointerHits.ForEach(hit => hit.SendMessage("OnScroll", value.Get<float>(), options: SendMessageOptions.DontRequireReceiver));
-
+        protected void OnInteract() => ForwardMessage("OnInteract");
+        protected void OnPress() => ForwardMessage("OnPress");
+        protected void OnRelease() => ForwardMessage("OnRelease");
+        protected void OnScroll(InputValue value) => ForwardMessage("OnScroll", value.Get<float>());
         protected void OnDebugTest() => debugLogic.Invoke();
-
         protected void OnPointer(InputValue value)
         {
             Ray r = Camera.main.ScreenPointToRay(value.Get<Vector2>());
-            List<Collider> rawHits;
-            if (stopAtFirstHit)
-            {
-                rawHits = new();
-                if (Physics.Raycast(r, out RaycastHit hit))
-                    rawHits.Add(hit.collider);
-            }
-            else
-                rawHits = Physics.RaycastAll(r).Select(hit => hit.collider).ToList();
-
-            foreach (var hit in PointerHits.Except(rawHits).ToList())
-                if (hit) hit.SendMessage("OnPointerExit", options: SendMessageOptions.DontRequireReceiver);
-            foreach (var hit in rawHits.Except(PointerHits).ToList())
-                if (hit) hit.SendMessage("OnPointerEnter", options: SendMessageOptions.DontRequireReceiver);
-            PointerHits = rawHits;
+            var rawHits = Physics.RaycastAll(r);
+            System.Array.Sort(rawHits, (a, b) => a.distance.CompareTo(b.distance));
+            List<Collider> newHits = rawHits.Select(hit => hit.collider).ToList();
+            foreach (var hit in PointerHits.Except(newHits).ToList())
+                if (hit)
+                {
+                    hit.SendMessage("OnPointerExit", options: SendMessageOptions.DontRequireReceiver);
+                    if (hit.GetComponent<PointerBase>() && hit.GetComponent<PointerBase>().opaque) break;
+                }
+            foreach (var hit in newHits.Except(PointerHits).ToList())
+                if (hit)
+                {
+                    hit.SendMessage("OnPointerEnter", options: SendMessageOptions.DontRequireReceiver);
+                    if (hit.GetComponent<PointerBase>() && hit.GetComponent<PointerBase>().opaque) break;
+                }
+            PointerHits = newHits;
         }
-
         protected void OnEscape()
         {
 #if UNITY_STANDALONE
@@ -91,5 +94,5 @@ namespace Omnis
 #endif
         }
         #endregion
-        }
     }
+}

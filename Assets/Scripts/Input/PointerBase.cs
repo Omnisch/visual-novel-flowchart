@@ -5,6 +5,10 @@ namespace Omnis
     [RequireComponent(typeof(Collider))]
     public abstract class PointerBase : MonoBehaviour
     {
+        #region Serialized Fields
+        public bool opaque;
+        #endregion
+
         #region Fields
         protected bool interactable;
         protected bool isPointed;

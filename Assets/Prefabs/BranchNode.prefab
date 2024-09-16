@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167179fcb79c3024eb233ecc8ae1c696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opaque: 1
   parents: []
   children: []
   savePath: 
@@ -416,6 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3ae4bd446509942b0f112497d6d507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opaque: 1
   enterCallback:
     m_PersistentCalls:
       m_Calls: []
@@ -559,6 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3ae4bd446509942b0f112497d6d507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opaque: 1
   enterCallback:
     m_PersistentCalls:
       m_Calls: []
