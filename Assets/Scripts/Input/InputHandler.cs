@@ -5,12 +5,11 @@ using UnityEngine.InputSystem;
 
 namespace Omnis
 {
-    public class PlayerInputHandler : MonoBehaviour
+    public class InputHandler : MonoBehaviour
     {
         #region Serialized Fields
-        [SerializeField] private PlayerInput playerInput;
-        [SerializeField] private Logic debugLogic;
-        [SerializeField] private bool stopAtFirstHit;
+        [SerializeField] protected PlayerInput playerInput;
+        [SerializeField] protected Logic debugLogic;
         #endregion
 
         #region Fields
@@ -26,8 +25,8 @@ namespace Omnis
         #endregion
 
         #region Functions
-        private void FlushInput() {}
-        private void ForwardMessage(string methodName, object value = null)
+        protected void FlushInput() {}
+        protected void ForwardMessage(string methodName, object value = null)
         {
             foreach (var hit in PointerHits)
             {
@@ -49,7 +48,6 @@ namespace Omnis
         private void OnEnable()
         {
             playerInput.enabled = true;
-            FlushInput();
         }
 
         private void OnDisable()
@@ -59,12 +57,15 @@ namespace Omnis
         #endregion
 
         #region Handlers
-        protected void OnInteract() => ForwardMessage("OnInteract");
-        protected void OnPress() => ForwardMessage("OnPress");
-        protected void OnRelease() => ForwardMessage("OnRelease");
-        protected void OnScroll(InputValue value) => ForwardMessage("OnScroll", value.Get<float>());
-        protected void OnDebugTest() => debugLogic.Invoke();
-        protected void OnPointer(InputValue value)
+        protected virtual void OnInteract() => ForwardMessage("OnInteract");
+        protected virtual void OnLeftPress() => ForwardMessage("OnLeftPress");
+        protected virtual void OnLeftRelease() => ForwardMessage("OnLeftRelease");
+        protected virtual void OnRightPress() => ForwardMessage("OnRightPress");
+        protected virtual void OnRightRelease() => ForwardMessage("OnRightRelease");
+        protected virtual void OnMiddlePress() => ForwardMessage("OnMiddlePress");
+        protected virtual void OnMiddleRelease() => ForwardMessage("OnMiddleRelease");
+        protected virtual void OnScroll(InputValue value) => ForwardMessage("OnScroll", value.Get<float>());
+        protected virtual void OnPointer(InputValue value)
         {
             Ray r = Camera.main.ScreenPointToRay(value.Get<Vector2>());
             var rawHits = Physics.RaycastAll(r);
@@ -84,12 +85,12 @@ namespace Omnis
                 }
             PointerHits = newHits;
         }
-        protected void OnEscape()
+        protected virtual void OnDebugTest() => debugLogic.Invoke();
+        protected virtual void OnEscape()
         {
 #if UNITY_STANDALONE
             Application.Quit();
-#endif
-#if UNITY_EDITOR
+#elif UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }

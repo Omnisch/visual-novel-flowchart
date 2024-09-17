@@ -16,21 +16,21 @@ namespace Omnis
         #region Interfaces
         public override bool IsPointed
         {
-            get => isPointed;
+            get => base.IsPointed;
             set
             {
-                isPointed = value;
-                if (isPointed) enterCallback?.Invoke();
+                base.IsPointed = value;
+                if (value) enterCallback?.Invoke();
                 else exitCallback?.Invoke();
             }
         }
-        public override bool IsPressed
+        public override bool IsLeftPressed
         {
-            get => isPressed;
+            get => base.IsLeftPressed;
             set
             {
-                isPressed = value;
-                if (isPressed) pressCallback?.Invoke();
+                base.IsLeftPressed = value;
+                if (value) pressCallback?.Invoke();
                 else releaseCallback?.Invoke();
             }
         }

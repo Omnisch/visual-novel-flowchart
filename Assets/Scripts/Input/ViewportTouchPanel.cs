@@ -40,7 +40,7 @@ namespace Omnis
 
         private void Update()
         {
-            if (dragControl && isPressed)
+            if (dragControl && IsMiddlePressed)
                 cam.transform.position -= (2f * dragScale * ScrollScale / Screen.height) * VectorTweak.V2ToV3xy(Mouse.current.delta.ReadValue());
         }
         #endregion

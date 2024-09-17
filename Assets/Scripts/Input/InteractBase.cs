@@ -10,9 +10,11 @@ namespace Omnis
         #endregion
 
         #region Fields
-        protected bool interactable;
-        protected bool isPointed;
-        protected bool isPressed;
+        private bool interactable;
+        private bool isPointed;
+        private bool isLeftPressed;
+        private bool isRightPressed;
+        private bool isMiddlePressed;
         #endregion
 
         #region Interfaces
@@ -21,15 +23,25 @@ namespace Omnis
             get => interactable;
             set => interactable = value;
         }
+        public virtual bool IsLeftPressed
+        {
+            get => isLeftPressed;
+            set => isLeftPressed = value;
+        }
+        public virtual bool IsRightPressed
+        {
+            get => isRightPressed;
+            set => isRightPressed = value;
+        }
+        public virtual bool IsMiddlePressed
+        {
+            get => isMiddlePressed;
+            set => isMiddlePressed = value;
+        }
         public virtual bool IsPointed
         {
             get => isPointed;
             set => isPointed = value;
-        }
-        public virtual bool IsPressed
-        {
-            get => isPressed;
-            set => isPressed = value;
         }
         #endregion
 
@@ -46,40 +58,15 @@ namespace Omnis
         #endregion
 
         #region Handlers
-        private void OnPointerEnter()
-        {
-            if (!Interactable) return;
-            
-            IsPointed = true;
-        }
-
-        private void OnPointerExit()
-        {
-            if (!Interactable) return;
-
-            IsPointed = false;
-        }
-
-        private void OnPress()
-        {
-            if (!Interactable) return;
-
-            IsPressed = true;
-        }
-
-        private void OnRelease()
-        {
-            if (!Interactable) return;
-
-            IsPressed = false;
-        }
-
-        private void OnInteract()
-        {
-            if (!Interactable) return;
-
-            OnInteracted();
-        }
+        private void OnInteract()       { if (Interactable) OnInteracted(); }
+        private void OnLeftPress()      { if (Interactable) IsLeftPressed = true; }
+        private void OnLeftRelease()    { if (Interactable) IsLeftPressed = false; }
+        private void OnRightPress()     { if (Interactable) IsRightPressed = true; }
+        private void OnRightRelease()   { if (Interactable) IsRightPressed = false; }
+        private void OnMiddlePress()    { if (Interactable) IsMiddlePressed = true; }
+        private void OnMiddleRelease()  { if (Interactable) IsMiddlePressed = false; }
+        private void OnPointerEnter()   { if (Interactable) IsPointed = true; }
+        private void OnPointerExit()    { if (Interactable) IsPointed = false; }
         #endregion
     }
 }

@@ -10,13 +10,13 @@ namespace Omnis.BranchTracker
         #endregion
 
         #region Interfaces
-        public override bool IsPressed
+        public override bool IsLeftPressed
         {
-            get => isPressed;
+            get => base.IsLeftPressed;
             set
             {
-                isPressed = value;
-                if (isPressed)
+                base.IsLeftPressed = value;
+                if (value)
                 {
                     GameManager.Instance.ActiveNode = this;
                     cursorOffset = transform.position - Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -26,7 +26,7 @@ namespace Omnis.BranchTracker
 
         public void OnUpdate()
         {
-            if (isPressed)
+            if (IsLeftPressed)
             {
                 transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + cursorOffset;
                 UpdateLinks();

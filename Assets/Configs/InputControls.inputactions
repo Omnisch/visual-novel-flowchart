@@ -34,24 +34,6 @@
             "id": "ef35026d-16ed-4efb-9b4f-491b1cd0c629",
             "actions": [
                 {
-                    "name": "Press",
-                    "type": "Button",
-                    "id": "6d747fa9-5bcc-4a8b-913f-cd176df3cbfd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Release",
-                    "type": "Button",
-                    "id": "52f4597b-dc1e-46fa-933b-accd8be11d0e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "4cde90a7-d11b-42ab-b05e-9ad89d0e1793",
@@ -61,9 +43,54 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ContextMenu",
+                    "name": "LeftPress",
+                    "type": "Button",
+                    "id": "6d747fa9-5bcc-4a8b-913f-cd176df3cbfd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftRelease",
+                    "type": "Button",
+                    "id": "52f4597b-dc1e-46fa-933b-accd8be11d0e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightPress",
                     "type": "Button",
                     "id": "f643334b-7082-40c2-9111-130f52dffb30",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightRelease",
+                    "type": "Button",
+                    "id": "af0bc917-ec26-4552-82c6-18242463894c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MiddlePress",
+                    "type": "Button",
+                    "id": "afa98d18-763c-458a-99a1-3ac8fab1f018",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MiddleRelease",
+                    "type": "Button",
+                    "id": "bb71f8c2-001c-4bab-a1f3-66204cbd2362",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -100,23 +127,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "5f93d16c-f859-4c8b-ae7b-e06f4baeb8b0",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6823d19f-b56b-4eef-be1d-ebb8236c9763",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "PC",
-                    "action": "ContextMenu",
+                    "action": "RightPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -149,7 +165,7 @@
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Release",
+                    "action": "LeftRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -160,7 +176,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Press",
+                    "action": "LeftPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -172,6 +188,50 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc36256c-617a-4fb9-a998-82cb6fdb21e0",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "MiddlePress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f93d16c-f859-4c8b-ae7b-e06f4baeb8b0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "003781b7-fce3-490d-a660-f901ebfb296e",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "RightRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35ffcd45-4909-4ab6-8908-432a32b96936",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "MiddleRelease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
