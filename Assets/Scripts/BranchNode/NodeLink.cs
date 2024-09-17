@@ -19,6 +19,7 @@ namespace Omnis.BranchTracker
         public void UpdatePositions()
         {
             if (doNotUpdatePositions) return;
+            if (!fromPoint || !toPoint) return;
 
             Vector3[] positions = {
                 VectorTweak.xyn(fromPoint.transform.position, -100f),

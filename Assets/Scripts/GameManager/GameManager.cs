@@ -25,9 +25,7 @@ namespace Omnis.BranchTracker
                 UpdateInputFieldText();
             }
         }
-        #endregion
-
-        #region Functions
+        public LinkSlot TargetSlot { get; set; }
         #endregion
 
         #region Unity Methods

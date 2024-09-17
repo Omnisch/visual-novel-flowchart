@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6519951643980896072}
   - component: {fileID: 4659493111092076592}
   - component: {fileID: 7832040140306370514}
-  - component: {fileID: 8235587455606843757}
+  - component: {fileID: 8925048507536422214}
   m_Layer: 0
   m_Name: Link Slot
   m_TagString: Untagged
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.4, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8235587455606843757
+--- !u!114 &8925048507536422214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,10 +116,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 358963572537339904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa7a1203b76bd64f8035fd1b6d9c690, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ea6f517fb13bba4da6ff2e369e59c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   opaque: 1
   master: {fileID: 0}
+  allowIn: 1
   inLinks: []
+  allowOut: 1
   outLinks: []

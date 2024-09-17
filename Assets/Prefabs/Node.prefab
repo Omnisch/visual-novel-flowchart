@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opaque: 1
-  inSlot: {fileID: 8797740850864444131}
-  outSlot: {fileID: 483672786625735406}
+  inSlot: {fileID: 8323023529674706632}
+  outSlot: {fileID: 1090102740439594693}
   childOffset: {x: 0.5, y: -2.8, z: 0}
   display: {fileID: 1430500277223284620}
   description: 
@@ -645,6 +645,18 @@ PrefabInstance:
       propertyPath: master
       value: 
       objectReference: {fileID: 8298234888022466152}
+    - target: {fileID: 8235587455606843757, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: allowOut
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: master
+      value: 
+      objectReference: {fileID: 8298234888022466152}
+    - target: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: allowOut
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -655,15 +667,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6519951643980896072, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
   m_PrefabInstance: {fileID: 602767225827113870}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8797740850864444131 stripped
+--- !u!114 &8323023529674706632 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8235587455606843757, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
   m_PrefabInstance: {fileID: 602767225827113870}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa7a1203b76bd64f8035fd1b6d9c690, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ea6f517fb13bba4da6ff2e369e59c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8429884173619184515
@@ -718,24 +730,67 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8210017400979425153, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: pressCallback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210017400979425153, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: pressCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210017400979425153, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: pressCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1090102740439594693}
+    - target: {fileID: 8210017400979425153, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: pressCallback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210017400979425153, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: pressCallback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateFloatLink
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210017400979425153, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: pressCallback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Omnis.BranchTracker.LinkSlot, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210017400979425153, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: pressCallback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8235587455606843757, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
       propertyPath: master
       value: 
       objectReference: {fileID: 8298234888022466152}
+    - target: {fileID: 8235587455606843757, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: allowIn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: master
+      value: 
+      objectReference: {fileID: 8298234888022466152}
+    - target: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: allowIn
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 358963572537339904, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8025970067880994026}
   m_SourcePrefab: {fileID: 100100000, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
---- !u!114 &483672786625735406 stripped
+--- !u!114 &1090102740439594693 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8235587455606843757, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
   m_PrefabInstance: {fileID: 8429884173619184515}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8072629256249078659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa7a1203b76bd64f8035fd1b6d9c690, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ea6f517fb13bba4da6ff2e369e59c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &3352775474722297035 stripped
@@ -743,3 +798,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6519951643980896072, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
   m_PrefabInstance: {fileID: 8429884173619184515}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8072629256249078659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 358963572537339904, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+  m_PrefabInstance: {fileID: 8429884173619184515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8025970067880994026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072629256249078659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3ae4bd446509942b0f112497d6d507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opaque: 1
+  enterCallback:
+    m_PersistentCalls:
+      m_Calls: []
+  pressCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1090102740439594693}
+        m_TargetAssemblyTypeName: Omnis.BranchTracker.LinkSlot, Assembly-CSharp
+        m_MethodName: CreateFloatLink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  releaseCallback:
+    m_PersistentCalls:
+      m_Calls: []
+  exitCallback:
+    m_PersistentCalls:
+      m_Calls: []
