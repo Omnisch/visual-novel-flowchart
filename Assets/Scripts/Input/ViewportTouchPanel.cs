@@ -8,6 +8,7 @@ namespace Omnis
     {
         #region Serialized Fields
         [SerializeField] private Camera cam;
+        [SerializeField] private Camera anchorCam;
         [SerializeField] private float dragScale = 1f;
         public Vector2 scrollLimit;
         public bool scrollControl;
@@ -16,16 +17,29 @@ namespace Omnis
 
         #region Fields
         private float scrollScale;
+        private Vector3 cursorOffset;
         #endregion
 
         #region Interfaces
+        public override bool IsMiddlePressed
+        {
+            get => base.IsMiddlePressed;
+            set
+            {
+                base.IsMiddlePressed = value;
+                if (value)
+                    cursorOffset = cam.transform.position + anchorCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                else
+                    anchorCam.transform.position = cam.transform.position;
+            }
+        }
         public float ScrollScale
         {
             get => scrollScale;
             set
             {
                 scrollScale = Mathf.Clamp(value, scrollLimit.x, scrollLimit.y);
-                cam.orthographicSize = scrollScale;
+                cam.orthographicSize = anchorCam.orthographicSize = scrollScale;
             }
         }
         #endregion
@@ -40,7 +54,7 @@ namespace Omnis
         private void Update()
         {
             if (dragControl && IsMiddlePressed)
-                cam.transform.position -= (2f * dragScale * ScrollScale / Screen.height) * VectorTweak.V2ToV3xy(Mouse.current.delta.ReadValue());
+                cam.transform.position = - anchorCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + cursorOffset;
         }
         #endregion
 
