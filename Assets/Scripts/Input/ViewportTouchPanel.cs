@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 namespace Omnis
 {
     // Add this script to a collider binding to the cam that you want to control.
-    [RequireComponent(typeof(Collider))]
     public class ViewportTouchPanel : InteractBase
     {
         #region Serialized Fields

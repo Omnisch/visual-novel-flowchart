@@ -1,23 +1,21 @@
-using UnityEngine;
-using System.Collections;
-
 namespace Omnis
 {
-	public class DelayedLogic : Logic
-	{
-		#region Serialized fields
-		[Min(0)] public float delayTime;
-		#endregion
+    public class DelayedLogic : Logic
+    {
+        #region Serialized fields
+        [UnityEngine.Min(0)] public float delayTime;
+        #endregion
 
-		private IEnumerator InvokingCoroutine()
-		{
-			yield return new WaitForSecondsRealtime(delayTime);
-			callback.Invoke();
-		}
+        #region Interfaces
+        public override void Invoke() => StartCoroutine(InvokingCoroutine());
+        #endregion
 
-		public override void Invoke()
-		{
-			StartCoroutine(InvokingCoroutine());
-		}
-	}
+        #region Functions
+        private System.Collections.IEnumerator InvokingCoroutine()
+        {
+            yield return new UnityEngine.WaitForSecondsRealtime(delayTime);
+            callback.Invoke();
+        }
+        #endregion
+    }
 }

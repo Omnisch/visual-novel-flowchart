@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Omnis
 {
-    public class VectorTweak : MonoBehaviour
+    public abstract class VectorTweak
     {
         /// <returns>(x, y, 0)</returns>
         public static Vector3 V2ToV3xy(Vector2 v2) => new(v2.x, v2.y, 0f);

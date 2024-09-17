@@ -1,9 +1,7 @@
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Omnis
 {
-    [RequireComponent(typeof(Collider))]
     public class ClickLogic : InteractBase
     {
         #region Serialized Fields
