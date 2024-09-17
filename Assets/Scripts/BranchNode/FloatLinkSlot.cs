@@ -8,14 +8,16 @@ namespace Omnis.BranchTracker
         #region Interfaces
         public void TryPassLink()
         {
-            if (inLinks.Count > 0 && GameManager.Instance.TargetSlot)
-                if (GameManager.Instance.TargetSlot.TryAcceptLink(inLinks[0]))
-                {
-                    Destroy(gameObject);
-                    return;
-                }
+            bool passed = false;
+            if (GameManager.Instance.TargetSlot)
+            {
+                if (inLinks.Count > 0)
+                    passed = GameManager.Instance.TargetSlot.TryAcceptInLink(inLinks[0]);
+                else if (outLinks.Count > 0)
+                    passed = GameManager.Instance.TargetSlot.TryAcceptOutLink(outLinks[0]);
+            }
 
-            BreakAll();
+            if (!passed) BreakAll();
             Destroy(gameObject);
         }
         #endregion

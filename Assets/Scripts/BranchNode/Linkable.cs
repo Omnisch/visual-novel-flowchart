@@ -14,6 +14,12 @@ namespace Omnis.BranchTracker
         #endregion
 
         #region Interfaces
+        public void CreateLinkFrom(Linkable fromPoint)
+        {
+            var link = Instantiate(GameManager.Instance.gameSettings.linkPrefab).GetComponent<NodeLink>();
+            AddInLink(link);
+            fromPoint.AddOutLink(link);
+        }
         public void CreateLinkTo(Linkable toPoint)
         {
             var link = Instantiate(GameManager.Instance.gameSettings.linkPrefab).GetComponent<NodeLink>();

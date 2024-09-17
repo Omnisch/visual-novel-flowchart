@@ -660,8 +660,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 358963572537339904, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1927386549923836926}
   m_SourcePrefab: {fileID: 100100000, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+--- !u!1 &911485168890973070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 358963572537339904, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+  m_PrefabInstance: {fileID: 602767225827113870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1927386549923836926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911485168890973070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3ae4bd446509942b0f112497d6d507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opaque: 1
+  enterCallback:
+    m_PersistentCalls:
+      m_Calls: []
+  pressCallback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8323023529674706632}
+        m_TargetAssemblyTypeName: Omnis.BranchTracker.LinkSlot, Assembly-CSharp
+        m_MethodName: CreateLinkFromFloat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  releaseCallback:
+    m_PersistentCalls:
+      m_Calls: []
+  exitCallback:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &5919683609208859846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6519951643980896072, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
@@ -672,7 +717,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
   m_PrefabInstance: {fileID: 602767225827113870}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 911485168890973070}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ea6f517fb13bba4da6ff2e369e59c02, type: 3}
@@ -824,7 +869,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1090102740439594693}
         m_TargetAssemblyTypeName: Omnis.BranchTracker.LinkSlot, Assembly-CSharp
-        m_MethodName: CreateFloatLink
+        m_MethodName: CreateLinkToFloat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
