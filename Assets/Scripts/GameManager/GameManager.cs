@@ -7,7 +7,6 @@ namespace Omnis.BranchTracker
         #region Serialized Fields
         public GameSettings gameSettings;
         public NodePriority nodePriority;
-        public BranchNode root;
         #endregion
 
         #region Fields

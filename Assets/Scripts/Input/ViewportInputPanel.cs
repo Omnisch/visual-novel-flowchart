@@ -4,14 +4,12 @@ using UnityEngine.InputSystem;
 namespace Omnis
 {
     // Add this script to a collider binding to the cam that you want to control.
-    public class ViewportTouchPanel : InteractBase
+    public class ViewportInputPanel : InteractBase
     {
         #region Serialized Fields
         [SerializeField] private Camera cam;
         [SerializeField] private Camera anchorCam;
         public Vector2 scrollLimit;
-        public bool scrollControl;
-        public bool dragControl;
         #endregion
 
         #region Fields
@@ -52,7 +50,7 @@ namespace Omnis
 
         private void Update()
         {
-            if (dragControl && IsMiddlePressed)
+            if (IsMiddlePressed)
                 cam.transform.position = - anchorCam.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + cursorOffset;
         }
         #endregion
@@ -60,7 +58,6 @@ namespace Omnis
         #region Handlers
         protected void OnScroll(float value)
         {
-            if (!scrollControl) return;
             if (value == 0f) return;
             ScrollScale -= Mathf.Sign(value);
         }

@@ -33,8 +33,8 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7173663378557246336}
-  - {fileID: 6731402246660457010}
   - {fileID: 2300311010956516173}
+  - {fileID: 6731402246660457010}
   - {fileID: 5919683609208859846}
   - {fileID: 3352775474722297035}
   m_Father: {fileID: 0}
@@ -110,7 +110,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 2, z: 0.1}
+  m_Size: {x: 4, y: 3, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8298234888022466152
 MonoBehaviour:
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 7557589644864666655}
   - component: {fileID: 8758049478969969708}
   m_Layer: 0
-  m_Name: Remove Child
+  m_Name: Remove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
