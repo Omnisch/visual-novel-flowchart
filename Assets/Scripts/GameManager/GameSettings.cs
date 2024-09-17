@@ -8,5 +8,6 @@ namespace Omnis.BranchTracker
         [Header("Node")]
         public GameObject nodePrefab;
         public GameObject linkPrefab;
+        public GameObject slotPrefab;
     }
 }

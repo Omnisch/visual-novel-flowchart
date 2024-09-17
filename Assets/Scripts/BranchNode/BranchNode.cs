@@ -7,37 +7,28 @@ namespace Omnis.BranchTracker
     public partial class BranchNode : InteractBase
     {
         #region Serialized Fields
-        [Header("Links")]
-        public List<NodeLink> parentLinks;
-        public List<NodeLink> childLinks;
+        [Header("LinkSlots")]
+        public Linkable inSlot;
+        public Linkable outSlot;
         [Header("Offsets")]
         public Vector3 childOffset;
-        public Transform inOffset;
-        public Transform outOffset;
         #endregion
 
         #region Interfaces
+        public List<BranchNode> Parents => inSlot.inLinks.Select(link => link.fromPoint.master).ToList();
+        public List<BranchNode> Children => outSlot.outLinks.Select(link => link.toPoint.master).ToList();
         public void CreateChild()
         {
             Vector3 childPos = transform.position + childOffset;
             var child = Instantiate(GameManager.Instance.gameSettings.nodePrefab, childPos, Quaternion.identity).GetComponent<BranchNode>();
-            CreateChildLink(child);
+            outSlot.CreateLinkTo(child.inSlot);
             GameManager.Instance.nodePriority.Prioritize(child);
-        }
-        public void CreateChildLink(BranchNode child)
-        {
-            var link = Instantiate(GameManager.Instance.gameSettings.linkPrefab).GetComponent<NodeLink>();
-            link.fromNode = this;
-            link.toNode = child;
-            child.parentLinks.Add(link);
-            childLinks.Add(link);
-            UpdateLinks();
         }
         public void RemoveSelf()
         {
             GameManager.Instance.nodePriority.Remove(this);
-            while (childLinks.Count > 0) childLinks.First().Break();
-            while (parentLinks.Count > 0) parentLinks.First().Break();
+            inSlot.BreakAll();
+            outSlot.BreakAll();
             Destroy(gameObject);
         }
         #endregion
@@ -45,8 +36,8 @@ namespace Omnis.BranchTracker
         #region Functions
         private void UpdateLinks()
         {
-            parentLinks.ForEach(link => link.UpdatePositions());
-            childLinks.ForEach(link => link.UpdatePositions());
+            inSlot.UpdateLinks();
+            outSlot.UpdateLinks();
         }
         #endregion
     }

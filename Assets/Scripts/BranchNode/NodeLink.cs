@@ -6,8 +6,8 @@ namespace Omnis.BranchTracker
     public class NodeLink : MonoBehaviour
     {
         #region Serialized Fields
-        public BranchNode fromNode;
-        public BranchNode toNode;
+        public Linkable fromPoint;
+        public Linkable toPoint;
         #endregion
 
         #region Fields
@@ -21,21 +21,18 @@ namespace Omnis.BranchTracker
             if (doNotUpdatePositions) return;
 
             Vector3[] positions = {
-                VectorTweak.xyn(fromNode.transform.position + fromNode.outOffset.localPosition, -100f),
-                VectorTweak.xyn(toNode.transform.position + toNode.inOffset.localPosition, -100f),
+                VectorTweak.xyn(fromPoint.transform.position, -100f),
+                VectorTweak.xyn(toPoint.transform.position, -100f),
             };
             lineRenderer.SetPositions(positions);
         }
         public void Break()
         {
             doNotUpdatePositions = true;
-            fromNode.childLinks.Remove(this);
-            toNode.parentLinks.Remove(this);
+            fromPoint.outLinks.Remove(this);
+            toPoint.inLinks.Remove(this);
             Destroy(gameObject);
         }
-        #endregion
-
-        #region Functions
         #endregion
 
         #region Unity Methods

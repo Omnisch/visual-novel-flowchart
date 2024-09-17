@@ -9,7 +9,6 @@ namespace Omnis
         #region Serialized Fields
         [SerializeField] private Camera cam;
         [SerializeField] private Camera anchorCam;
-        [SerializeField] private float dragScale = 1f;
         public Vector2 scrollLimit;
         public bool scrollControl;
         public bool dragControl;
