@@ -3,12 +3,11 @@ using TMPro;
 
 namespace Omnis.BranchTracker
 {
-    public partial class BranchNode
+    public partial class Node
     {
         #region Serialized Fields
-        [Header("Text")]
         public TMP_Text display;
-        [SerializeField] private string description;
+        public string description;
         #endregion
 
         #region Interfaces

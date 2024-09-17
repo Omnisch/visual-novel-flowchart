@@ -7,14 +7,15 @@ namespace Omnis.BranchTracker
         #region Serialized Fields
         public GameSettings gameSettings;
         public NodePriority nodePriority;
+        public Node root;
         #endregion
 
         #region Fields
-        private BranchNode activeNode;
+        private Node activeNode;
         #endregion
 
         #region Interfaces
-        public BranchNode ActiveNode
+        public Node ActiveNode
         {
             get => activeNode;
             set

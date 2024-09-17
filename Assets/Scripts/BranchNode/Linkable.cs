@@ -6,7 +6,7 @@ namespace Omnis.BranchTracker
     public abstract class Linkable : InteractBase
     {
         #region Serialized Fields
-        public BranchNode master;
+        public Node master;
         public bool allowIn;
         public List<NodeLink> inLinks;
         public bool allowOut;

@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Omnis.BranchTracker
 {
-    public partial class BranchNode
+    public partial class Node
     {
         #region Fields
         private Vector3 cursorOffset;

@@ -4,23 +4,21 @@ using UnityEngine;
 
 namespace Omnis.BranchTracker
 {
-    public partial class BranchNode : InteractBase
+    public partial class Node : InteractBase
     {
         #region Serialized Fields
-        [Header("LinkSlots")]
         public Linkable inSlot;
         public Linkable outSlot;
-        [Header("Offsets")]
         public Vector3 childOffset;
         #endregion
 
         #region Interfaces
-        public List<BranchNode> Parents => inSlot.inLinks.Select(link => link.fromPoint.master).ToList();
-        public List<BranchNode> Children => outSlot.outLinks.Select(link => link.toPoint.master).ToList();
+        public List<Node> Parents => inSlot.inLinks.Select(link => link.fromPoint.master).ToList();
+        public List<Node> Children => outSlot.outLinks.Select(link => link.toPoint.master).ToList();
         public void CreateChild()
         {
             Vector3 childPos = transform.position + childOffset;
-            var child = Instantiate(GameManager.Instance.gameSettings.nodePrefab, childPos, Quaternion.identity).GetComponent<BranchNode>();
+            var child = Instantiate(GameManager.Instance.gameSettings.nodePrefab, childPos, Quaternion.identity).GetComponent<Node>();
             outSlot.CreateLinkTo(child.inSlot);
             GameManager.Instance.nodePriority.Prioritize(child);
         }
@@ -38,6 +36,16 @@ namespace Omnis.BranchTracker
         {
             inSlot.UpdateLinks();
             outSlot.UpdateLinks();
+        }
+        #endregion
+
+        #region Unity Methods
+        protected override void Start()
+        {
+            base.Start();
+
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            UpdateMode();
         }
         #endregion
     }
