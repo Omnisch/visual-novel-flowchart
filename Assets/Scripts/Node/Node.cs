@@ -37,7 +37,7 @@ namespace Omnis.Flowchart
             base.Start();
 
             spriteRenderer = GetComponent<SpriteRenderer>();
-            UpdateMode();
+            Mode = mode;
         }
         #endregion
     }

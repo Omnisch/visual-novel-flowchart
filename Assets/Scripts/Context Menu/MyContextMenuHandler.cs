@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Omnis
 {
-    public class ContextMenuHandler : InteractBase
+    // Add this script to a collider that receives the context menu call.
+    public class MyContextMenuHandler : InteractBase
     {
         #region Serialized Fields
         [SerializeField] private GameObject menu;

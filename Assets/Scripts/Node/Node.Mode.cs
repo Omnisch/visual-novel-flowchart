@@ -6,7 +6,7 @@ namespace Omnis.Flowchart
     public partial class Node
     {
         #region Serialized Fields
-        public NodeMode mode;
+        [SerializeField] private NodeMode mode;
         [SerializeField] private List<Sprite> nodeSprites;
         [SerializeField] private bool canChangeMode;
         #endregion
@@ -16,7 +16,36 @@ namespace Omnis.Flowchart
         #endregion
 
         #region Interfaces
-        public void InslandMode()
+        public NodeMode Mode
+        {
+            get => mode;
+            set
+            {
+                mode = value;
+                if (spriteRenderer)
+                    spriteRenderer.sprite = nodeSprites[(int)mode];
+                switch (value)
+                {
+                    case NodeMode.Island:
+                        inSlot.gameObject.SetActive(false);
+                        outSlot.gameObject.SetActive(false);
+                        break;
+                    case NodeMode.Root:
+                        inSlot.gameObject.SetActive(false);
+                        outSlot.gameObject.SetActive(true);
+                        break;
+                    case NodeMode.Branch:
+                        inSlot.gameObject.SetActive(true);
+                        outSlot.gameObject.SetActive(true);
+                        break;
+                    case NodeMode.Leaf:
+                        inSlot.gameObject.SetActive(true);
+                        outSlot.gameObject.SetActive(false);
+                        break;
+                }
+            }
+        }
+        public void IslandMode()
         {
             inSlot.BreakAll();
             outSlot.BreakAll();
@@ -36,32 +65,7 @@ namespace Omnis.Flowchart
         public void ChangeMode(NodeMode newMode)
         {
             if (!canChangeMode) return;
-            mode = newMode;
-            UpdateMode();
-        }
-        public void UpdateMode()
-        {
-            if (spriteRenderer)
-                spriteRenderer.sprite = nodeSprites[(int)mode];
-            switch (mode)
-            {
-                case NodeMode.Island:
-                    inSlot.gameObject.SetActive(false);
-                    outSlot.gameObject.SetActive(false);
-                    break;
-                case NodeMode.Root:
-                    inSlot.gameObject.SetActive(false);
-                    outSlot.gameObject.SetActive(true);
-                    break;
-                case NodeMode.Branch:
-                    inSlot.gameObject.SetActive(true);
-                    outSlot.gameObject.SetActive(true);
-                    break;
-                case NodeMode.Leaf:
-                    inSlot.gameObject.SetActive(true);
-                    outSlot.gameObject.SetActive(false);
-                    break;
-            }
+            Mode = newMode;
         }
         #endregion
     }

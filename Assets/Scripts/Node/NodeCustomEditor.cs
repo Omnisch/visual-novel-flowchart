@@ -19,6 +19,7 @@ namespace Omnis.Flowchart
             {
                 var mode = serializedObject.FindProperty("mode");
                 EditorGUILayout.PropertyField(mode, true);
+                (target as Node).Mode = (NodeMode)mode.enumValueIndex;
                 EditorGUI.indentLevel++;
                 switch ((NodeMode)mode.enumValueIndex)
                 {
@@ -50,7 +51,6 @@ namespace Omnis.Flowchart
             EditorGUILayout.PropertyField(serializedObject.FindProperty("description"), true);
 
             serializedObject.ApplyModifiedProperties();
-            (target as Node).UpdateMode();
         }
     }
 }
