@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: 1ce1e5313be86d1468ebcc0a43b77c4a, type: 2}
-  nodePriority: {fileID: 481572234}
+  nodeRegistry: {fileID: 481572234}
   root: {fileID: 147304672}
   inputField: {fileID: 508238892}
 --- !u!114 &481572233

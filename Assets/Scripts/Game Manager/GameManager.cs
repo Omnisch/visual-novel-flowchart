@@ -6,7 +6,7 @@ namespace Omnis.Flowchart
     {
         #region Serialized Fields
         public GameSettings gameSettings;
-        public NodePriority nodePriority;
+        public NodeRegistry nodeRegistry;
         public Node root;
         #endregion
 
@@ -21,7 +21,7 @@ namespace Omnis.Flowchart
             set
             {
                 activeNode = value;
-                nodePriority.Prioritize(activeNode);
+                nodeRegistry.Prioritize(activeNode);
                 UpdateInputFieldText();
             }
         }

@@ -26,12 +26,10 @@ namespace Omnis.Flowchart
                         break;
                     case NodeMode.Root:
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("outSlot"), true);
-                        EditorGUILayout.PropertyField(serializedObject.FindProperty("addChildButton"), true);
                         break;
                     case NodeMode.Branch:
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("inSlot"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("outSlot"), true);
-                        EditorGUILayout.PropertyField(serializedObject.FindProperty("addChildButton"), true);
                         break;
                     case NodeMode.Leaf:
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("inSlot"), true);
@@ -46,9 +44,6 @@ namespace Omnis.Flowchart
                     EditorGUILayout.ObjectField("Sprite", serializedObject.FindProperty("nodeSprites").GetArrayElementAtIndex(mode.enumValueIndex).objectReferenceValue, typeof(Sprite), false);
                 EditorGUI.indentLevel--;
             }
-
-            EditorTweak.Header("Offset");
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("childOffset"), true);
 
             EditorTweak.Header("Text");
             EditorGUILayout.PropertyField(serializedObject.FindProperty("display"), true);

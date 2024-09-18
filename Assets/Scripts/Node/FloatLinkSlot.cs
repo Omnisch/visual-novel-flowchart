@@ -8,16 +8,30 @@ namespace Omnis.Flowchart
         #region Interfaces
         public void TryPassLink()
         {
-            bool passed = false;
+            bool succeeded = false;
             if (GameManager.Instance.TargetSlot)
             {
                 if (inLinks.Count > 0)
-                    passed = GameManager.Instance.TargetSlot.TryAcceptInLink(inLinks[0]);
+                    succeeded = GameManager.Instance.TargetSlot.TryAcceptInLink(inLinks[0]);
                 else if (outLinks.Count > 0)
-                    passed = GameManager.Instance.TargetSlot.TryAcceptOutLink(outLinks[0]);
+                    succeeded = GameManager.Instance.TargetSlot.TryAcceptOutLink(outLinks[0]);
+            }
+            else
+            {
+                var newNode = GameManager.Instance.nodeRegistry.NewNode();
+                if (inLinks.Count > 0)
+                {
+                    newNode.transform.position = transform.position - newNode.inSlot.transform.localPosition;
+                    succeeded = (newNode.inSlot as LinkSlot).TryAcceptInLink(inLinks[0]);
+                }
+                else if (outLinks.Count > 0)
+                {
+                    newNode.transform.position = transform.position - newNode.outSlot.transform.localPosition;
+                    succeeded = (newNode.outSlot as LinkSlot).TryAcceptOutLink(outLinks[0]);
+                }
             }
 
-            if (!passed) BreakAll();
+            if (!succeeded) BreakAll();
             Destroy(gameObject);
         }
         #endregion

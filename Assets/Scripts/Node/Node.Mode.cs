@@ -7,7 +7,6 @@ namespace Omnis.Flowchart
     {
         #region Serialized Fields
         public NodeMode mode;
-        [SerializeField] private GameObject addChildButton;
         [SerializeField] private List<Sprite> nodeSprites;
         [SerializeField] private bool canChangeMode;
         #endregion
@@ -49,22 +48,18 @@ namespace Omnis.Flowchart
                 case NodeMode.Island:
                     inSlot.gameObject.SetActive(false);
                     outSlot.gameObject.SetActive(false);
-                    addChildButton.SetActive(false);
                     break;
                 case NodeMode.Root:
                     inSlot.gameObject.SetActive(false);
                     outSlot.gameObject.SetActive(true);
-                    addChildButton.SetActive(true);
                     break;
                 case NodeMode.Branch:
                     inSlot.gameObject.SetActive(true);
                     outSlot.gameObject.SetActive(true);
-                    addChildButton.SetActive(true);
                     break;
                 case NodeMode.Leaf:
                     inSlot.gameObject.SetActive(true);
                     outSlot.gameObject.SetActive(false);
-                    addChildButton.SetActive(false);
                     break;
             }
         }
