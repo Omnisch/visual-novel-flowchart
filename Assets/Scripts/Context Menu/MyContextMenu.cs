@@ -20,6 +20,7 @@ namespace Omnis.Flowchart
                         item.GetComponentInChildren<TMPro.TMP_Text>().text = entry.label;
                         item.onClick.AddListener(() => { target.SendMessage(entry.message, SendMessageOptions.DontRequireReceiver); });
                     }
+            GetComponent<RectTransform>().sizeDelta = new Vector2(200f, Mathf.Max(20f, transform.childCount * 40f + 4f));
         }
         private void OnDisable()
         {
