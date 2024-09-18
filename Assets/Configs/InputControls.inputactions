@@ -34,15 +34,6 @@
             "id": "ef35026d-16ed-4efb-9b4f-491b1cd0c629",
             "actions": [
                 {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "4cde90a7-d11b-42ab-b05e-9ad89d0e1793",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "LeftPress",
                     "type": "Button",
                     "id": "6d747fa9-5bcc-4a8b-913f-cd176df3cbfd",
@@ -199,17 +190,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "MiddlePress",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5f93d16c-f859-4c8b-ae7b-e06f4baeb8b0",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

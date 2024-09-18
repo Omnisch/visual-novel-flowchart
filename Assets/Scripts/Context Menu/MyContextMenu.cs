@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace Omnis.Flowchart
 {
+    [RequireComponent(typeof(RectTransform))]
     public class MyContextMenu : MonoBehaviour
     {
         #region Serialized Fields

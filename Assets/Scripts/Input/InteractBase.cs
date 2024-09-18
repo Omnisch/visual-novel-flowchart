@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Omnis
@@ -46,7 +47,7 @@ namespace Omnis
         #endregion
 
         #region Functions
-        protected virtual void OnInteracted() {}
+        protected virtual void OnInteracted(List<Collider> hits) {}
         #endregion
 
         #region Unity Methods
@@ -58,7 +59,7 @@ namespace Omnis
         #endregion
 
         #region Handlers
-        private void OnInteract()       { if (Interactable) OnInteracted(); }
+        protected void OnInteract(List<Collider> hits) { if (Interactable) OnInteracted(hits); }
         private void OnLeftPress()      { if (Interactable) IsLeftPressed = true; }
         private void OnLeftRelease()    { if (Interactable) IsLeftPressed = false; }
         private void OnRightPress()     { if (Interactable) IsRightPressed = true; }

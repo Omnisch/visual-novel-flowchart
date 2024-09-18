@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Omnis
+namespace Omnis.Flowchart
 {
     // Add this script to a collider binding to the cam that you want to control.
     public class ViewportInputPanel : InteractBase

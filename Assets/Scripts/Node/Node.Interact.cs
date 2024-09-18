@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,29 +19,23 @@ namespace Omnis.Flowchart
                 base.IsLeftPressed = value;
                 if (value)
                 {
-                    GameManager.Instance.ActiveNode = this;
                     cursorOffset = transform.position - Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 }
             }
         }
-        public override bool IsRightPressed
-        {
-            get => base.IsRightPressed;
-            set
-            {
-                base.IsRightPressed = value;
-                if (value) GameManager.Instance.ActiveNode = this;
-            }
-        }
-
         public void OnUpdate()
         {
             if (IsLeftPressed)
             {
                 transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + cursorOffset;
-                UpdateLinks();
+                inSlot.UpdateLinks();
+                outSlot.UpdateLinks();
             }
         }
+        #endregion
+
+        #region Functions
+        protected override void OnInteracted(List<Collider> hits) { GameManager.Instance.ActiveNode = this; }
         #endregion
     }
 }

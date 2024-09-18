@@ -30,6 +30,7 @@ namespace Omnis
         {
             foreach (var hit in PointerHits)
             {
+                hit.SendMessage("OnInteract", PointerHits, SendMessageOptions.DontRequireReceiver);
                 hit.SendMessage(methodName, value, SendMessageOptions.DontRequireReceiver);
                 if (hit.GetComponent<InteractBase>() && hit.GetComponent<InteractBase>().opaque) break;
             }
@@ -57,7 +58,6 @@ namespace Omnis
         #endregion
 
         #region Handlers
-        protected virtual void OnInteract() => ForwardMessage("OnInteract");
         protected virtual void OnLeftPress() => ForwardMessage("OnLeftPress");
         protected virtual void OnLeftRelease() => ForwardMessage("OnLeftRelease");
         protected virtual void OnRightPress() => ForwardMessage("OnRightPress");

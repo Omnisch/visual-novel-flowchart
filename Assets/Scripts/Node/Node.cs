@@ -23,14 +23,6 @@ namespace Omnis.Flowchart
         }
         #endregion
 
-        #region Functions
-        private void UpdateLinks()
-        {
-            inSlot.UpdateLinks();
-            outSlot.UpdateLinks();
-        }
-        #endregion
-
         #region Unity Methods
         protected override void Start()
         {
