@@ -15,8 +15,16 @@ MonoBehaviour:
   nodePrefab: {fileID: 490290849265041124, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
   linkPrefab: {fileID: 19799689446025064, guid: 1dbc788a25851894eaec96af39f3727f, type: 3}
   floatSlotPrefab: {fileID: 5478370950592482778, guid: 521ef0b72b5b075489cdcd626f860401, type: 3}
-  nodeSprites:
-  - {fileID: 21300000, guid: 90ef1ccbd9ecd8543b8add32a36b5981, type: 3}
-  - {fileID: 21300000, guid: 12b6eb6855428394288a805bab4b9dc6, type: 3}
-  - {fileID: 21300000, guid: 803da07ebd6c3224d8cf3fc665927c5e, type: 3}
-  - {fileID: 21300000, guid: fbc6c1c3363225c4b971b8c014548df9, type: 3}
+  contextMenuRegistry:
+  - typeName: Omnis.Flowchart.Node
+    label: Root
+    message: RootMode
+  - typeName: Omnis.Flowchart.Node
+    label: Branch
+    message: BranchMode
+  - typeName: Omnis.Flowchart.Node
+    label: Leaf
+    message: LeafMode
+  - typeName: Omnis.Flowchart.Node
+    label: Island
+    message: IslandMode

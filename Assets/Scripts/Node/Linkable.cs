@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public abstract class Linkable : InteractBase
     {

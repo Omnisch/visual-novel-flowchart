@@ -129,13 +129,13 @@ MonoBehaviour:
   outSlot: {fileID: 1090102740439594693}
   childOffset: {x: 0.5, y: -2.8, z: 0}
   mode: 2
-  removeButton: {fileID: 3904981871580121079}
   addChildButton: {fileID: 7442427331997654951}
   nodeSprites:
   - {fileID: 21300000, guid: 90ef1ccbd9ecd8543b8add32a36b5981, type: 3}
   - {fileID: 21300000, guid: 12b6eb6855428394288a805bab4b9dc6, type: 3}
   - {fileID: 21300000, guid: 803da07ebd6c3224d8cf3fc665927c5e, type: 3}
   - {fileID: 21300000, guid: fbc6c1c3363225c4b971b8c014548df9, type: 3}
+  canChangeMode: 1
   display: {fileID: 1430500277223284620}
   description: 
 --- !u!1 &2257762521695421312

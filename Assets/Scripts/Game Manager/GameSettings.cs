@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     [CreateAssetMenu(menuName = "Omnis/Game Settings")]
     public class GameSettings : ScriptableObject
@@ -17,7 +17,8 @@ namespace Omnis.BranchTracker
     [System.Serializable]
     public struct ContextMenuEntry
     {
-        public string key;
-        public UnityEngine.Events.UnityEvent value;
+        public string typeName;
+        public string label;
+        public string message;
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public class NodePriority : MonoBehaviour
     {

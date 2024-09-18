@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     [RequireComponent(typeof(LineRenderer))]
     public class NodeLink : MonoBehaviour

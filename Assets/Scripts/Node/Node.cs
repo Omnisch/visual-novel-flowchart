@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public partial class Node : InteractBase
     {

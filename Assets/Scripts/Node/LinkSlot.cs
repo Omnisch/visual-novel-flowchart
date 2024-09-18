@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public class LinkSlot : Linkable
     {

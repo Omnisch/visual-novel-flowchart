@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public class FloatLinkSlot : Linkable
     {

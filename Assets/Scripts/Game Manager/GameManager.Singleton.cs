@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public partial class GameManager
     {

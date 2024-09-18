@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public partial class Node
     {
@@ -21,6 +21,15 @@ namespace Omnis.BranchTracker
                     GameManager.Instance.ActiveNode = this;
                     cursorOffset = transform.position - Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 }
+            }
+        }
+        public override bool IsRightPressed
+        {
+            get => base.IsRightPressed;
+            set
+            {
+                base.IsRightPressed = value;
+                if (value) GameManager.Instance.ActiveNode = this;
             }
         }
 

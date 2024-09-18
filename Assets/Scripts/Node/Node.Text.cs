@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public partial class Node
     {

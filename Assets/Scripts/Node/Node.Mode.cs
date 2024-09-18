@@ -1,15 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Omnis.BranchTracker
+namespace Omnis.Flowchart
 {
     public partial class Node
     {
         #region Serialized Fields
         public NodeMode mode;
-        [SerializeField] private GameObject removeButton;
         [SerializeField] private GameObject addChildButton;
         [SerializeField] private List<Sprite> nodeSprites;
+        [SerializeField] private bool canChangeMode;
         #endregion
 
         #region Fields
@@ -17,8 +17,26 @@ namespace Omnis.BranchTracker
         #endregion
 
         #region Interfaces
+        public void InslandMode()
+        {
+            inSlot.BreakAll();
+            outSlot.BreakAll();
+            ChangeMode(NodeMode.Island);
+        }
+        public void RootMode()
+        {
+            inSlot.BreakAll();
+            ChangeMode(NodeMode.Root);
+        }
+        public void BranchMode() => ChangeMode(NodeMode.Branch);
+        public void LeafMode()
+        {
+            outSlot.BreakAll();
+            ChangeMode(NodeMode.Leaf);
+        }
         public void ChangeMode(NodeMode newMode)
         {
+            if (!canChangeMode) return;
             mode = newMode;
             UpdateMode();
         }
@@ -30,25 +48,21 @@ namespace Omnis.BranchTracker
             {
                 case NodeMode.Island:
                     inSlot.gameObject.SetActive(false);
-                    removeButton.SetActive(false);
                     outSlot.gameObject.SetActive(false);
                     addChildButton.SetActive(false);
                     break;
                 case NodeMode.Root:
                     inSlot.gameObject.SetActive(false);
-                    removeButton.SetActive(false);
                     outSlot.gameObject.SetActive(true);
                     addChildButton.SetActive(true);
                     break;
                 case NodeMode.Branch:
                     inSlot.gameObject.SetActive(true);
-                    removeButton.SetActive(true);
                     outSlot.gameObject.SetActive(true);
                     addChildButton.SetActive(true);
                     break;
                 case NodeMode.Leaf:
                     inSlot.gameObject.SetActive(true);
-                    removeButton.SetActive(true);
                     outSlot.gameObject.SetActive(false);
                     addChildButton.SetActive(false);
                     break;
