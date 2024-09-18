@@ -803,6 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4252349445112600804, guid: cdbab997821b5c3488e9a10e1eb07fa5, type: 3}
+  targets: []
 --- !u!1 &1297887270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opaque: 0
-  menu: {fileID: 1033299351}
+  menu: {fileID: 1033299356}
 --- !u!1 &1469537361
 GameObject:
   m_ObjectHideFlags: 0

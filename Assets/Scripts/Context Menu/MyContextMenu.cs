@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +9,15 @@ namespace Omnis.Flowchart
     {
         #region Serialized Fields
         [SerializeField] private GameObject itemPrefab;
+        public List<GameObject> targets;
         #endregion
 
         #region Unity Methods
         private void OnEnable()
         {
             foreach (var entry in GameManager.Instance.gameSettings.contextMenuRegistry)
-                if (GameManager.Instance.ActiveNode)
-                    if (GameManager.Instance.ActiveNode.TryGetComponent(System.Type.GetType(entry.typeName), out var target))
+                foreach (var target in targets)
+                    if (target && target.TryGetComponent(System.Type.GetType(entry.typeName), out _))
                     {
                         var item = Instantiate(itemPrefab, transform).GetComponent<Button>();
                         item.GetComponentInChildren<TMPro.TMP_Text>().text = entry.label;

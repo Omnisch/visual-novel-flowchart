@@ -10,9 +10,10 @@ namespace Omnis.Flowchart
         #endregion
 
         #region Interfaces
-        public Node NewNode()
+        public Node NewNode() => NewNode(Vector3.zero);
+        public Node NewNode(Vector3 worldPosition)
         {
-            var newNode = Instantiate(GameManager.Instance.gameSettings.nodePrefab).GetComponent<Node>();
+            var newNode = Instantiate(GameManager.Instance.gameSettings.nodePrefab, worldPosition, Quaternion.identity).GetComponent<Node>();
             Prioritize(newNode);
             return newNode;
         }
