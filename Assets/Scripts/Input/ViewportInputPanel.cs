@@ -45,7 +45,7 @@ namespace Omnis.Flowchart
         protected override void Start()
         {
             base.Start();
-            scrollScale = 5f;
+            scrollScale = cam.orthographicSize;
         }
 
         private void Update()
