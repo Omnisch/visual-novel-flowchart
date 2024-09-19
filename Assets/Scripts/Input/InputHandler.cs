@@ -85,6 +85,8 @@ namespace Omnis
                 }
             PointerHits = newHits;
         }
+        protected virtual void OnSave() => ForwardMessage("OnSave");
+        protected virtual void OnLoad() => ForwardMessage("OnLoad");
         protected virtual void OnDebugTest() => debugLogic.Invoke();
         protected virtual void OnEscape()
         {

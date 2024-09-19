@@ -84,5 +84,10 @@ namespace Omnis.Flowchart
             menu.gameObject.SetActive(false);
         }
         #endregion
+
+        #region Handlers
+        protected void OnSave() => SaveFile();
+        protected void OnLoad() => LoadFile();
+        #endregion
     }
 }
