@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Omnis.Flowchart
 {
     [RequireComponent(typeof(LineRenderer))]
-    public class NodeLink : MonoBehaviour
+    public class Link : MonoBehaviour
     {
         #region Serialized Fields
         public Linkable fromPoint;

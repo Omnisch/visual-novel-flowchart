@@ -8,20 +8,20 @@ namespace Omnis.Flowchart
         #region Serialized Fields
         public Node master;
         public bool allowIn;
-        public List<NodeLink> inLinks;
+        public List<Link> inLinks;
         public bool allowOut;
-        public List<NodeLink> outLinks;
+        public List<Link> outLinks;
         #endregion
 
         #region Interfaces
         public void CreateLinkFrom(Linkable fromPoint)
         {
-            var link = Instantiate(GameManager.Instance.settings.linkPrefab).GetComponent<NodeLink>();
+            var link = Instantiate(GameManager.Instance.settings.linkPrefab).GetComponent<Link>();
             link.Connect(fromPoint, this);
         }
         public void CreateLinkTo(Linkable toPoint)
         {
-            var link = Instantiate(GameManager.Instance.settings.linkPrefab).GetComponent<NodeLink>();
+            var link = Instantiate(GameManager.Instance.settings.linkPrefab).GetComponent<Link>();
             link.Connect(this, toPoint);
         }
         public void UpdateLinks()

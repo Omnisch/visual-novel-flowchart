@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Omnis.Flowchart
 {
-    public class NodeRegistry : MonoBehaviour
+    public class Registry : MonoBehaviour
     {
         #region Serialized Fields
         [SerializeField] private List<Node> nodeList;
-        [SerializeField] private List<NodeLink> linkList;
+        [SerializeField] private List<Link> linkList;
         #endregion
 
         #region Interfaces
@@ -24,6 +24,7 @@ namespace Omnis.Flowchart
                         NodeData nodeData = new();
                         nodeData.position = node.transform.position;
                         nodeData.mode = (int)node.Mode;
+                        nodeData.description = node.Description;
                         nodesData.Add(nodeData);
                     }
                     data.nodeData = nodesData;
@@ -49,6 +50,7 @@ namespace Omnis.Flowchart
             {
                 var node = NewNode(VectorTweak.V2ToV3xy(rawNode.position));
                 node.Mode = (NodeMode)rawNode.mode;
+                node.Description = rawNode.description;
                 nodeList.Add(node);
             }
             foreach (var rawLink in newData.linkData)
@@ -59,8 +61,8 @@ namespace Omnis.Flowchart
         public Node NewNode() => NewNode(Vector3.zero);
         public Node NewNode(Vector3 worldPosition)
             => Instantiate(GameManager.Instance.settings.nodePrefab, worldPosition, Quaternion.identity).GetComponent<Node>();
-        public NodeLink NewLink()
-            => Instantiate(GameManager.Instance.settings.linkPrefab).GetComponent<NodeLink>();
+        public Link NewLink()
+            => Instantiate(GameManager.Instance.settings.linkPrefab).GetComponent<Link>();
         public void Prioritize(Node node)
         {
             nodeList.Remove(node);
@@ -68,13 +70,13 @@ namespace Omnis.Flowchart
 
             UpdateLayer();
         }
-        public void Prioritize(NodeLink link)
+        public void Prioritize(Link link)
         {
             linkList.Remove(link);
             linkList.Add(link);
         }
         public bool Remove(Node node) => nodeList.Remove(node);
-        public bool Remove(NodeLink link) => linkList.Remove(link);
+        public bool Remove(Link link) => linkList.Remove(link);
         #endregion
 
         #region Functions
@@ -102,6 +104,7 @@ namespace Omnis.Flowchart
     {
         public Vector2 position;
         public int mode;
+        public string description;
     }
     public struct LinkData
     {

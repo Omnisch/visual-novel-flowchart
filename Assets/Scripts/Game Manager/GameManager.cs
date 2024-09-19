@@ -6,7 +6,7 @@ namespace Omnis.Flowchart
     {
         #region Serialized Fields
         public GameSettings settings;
-        public NodeRegistry registry;
+        public Registry registry;
         [SerializeField] private Node activeNode;
         #endregion
 

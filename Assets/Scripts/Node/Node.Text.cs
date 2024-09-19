@@ -1,13 +1,12 @@
 using UnityEngine;
-using TMPro;
 
 namespace Omnis.Flowchart
 {
     public partial class Node
     {
         #region Serialized Fields
-        public TMP_Text display;
-        public string description;
+        public TMPro.TMP_Text display;
+        [SerializeField] private string description;
         #endregion
 
         #region Interfaces

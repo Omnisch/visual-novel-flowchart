@@ -18,7 +18,7 @@ namespace Omnis.Flowchart
             var toPoint = Instantiate(GameManager.Instance.settings.floatSlotPrefab, toPointPos, Quaternion.identity).GetComponent<Linkable>();
             CreateLinkTo(toPoint);
         }
-        public bool TryAcceptInLink(NodeLink link)
+        public bool TryAcceptInLink(Link link)
         {
             if (!allowIn) return false;
             if (link.fromPoint.master == master) return false;
@@ -26,7 +26,7 @@ namespace Omnis.Flowchart
             link.Connect(link.fromPoint, this);
             return true;
         }
-        public bool TryAcceptOutLink(NodeLink link)
+        public bool TryAcceptOutLink(Link link)
         {
             if (!allowOut) return false;
             if (link.toPoint.master == master) return false;
