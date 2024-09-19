@@ -803,6 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4252349445112600804, guid: cdbab997821b5c3488e9a10e1eb07fa5, type: 3}
+  splitLinePrefab: {fileID: 2101447512201566776, guid: a2a1486dae2d2bc439dbc715ed4b8d45, type: 3}
   targets: []
 --- !u!1 &1297887270
 GameObject:

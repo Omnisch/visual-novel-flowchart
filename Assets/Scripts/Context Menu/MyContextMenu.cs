@@ -9,6 +9,7 @@ namespace Omnis.Flowchart
     {
         #region Serialized Fields
         [SerializeField] private GameObject itemPrefab;
+        [SerializeField] private GameObject splitLinePrefab;
         public List<GameObject> targets;
         #endregion
 
@@ -28,14 +29,18 @@ namespace Omnis.Flowchart
         #region Unity Methods
         private void OnEnable()
         {
-            foreach (var entry in GameManager.Instance.gameSettings.contextMenuRegistry)
-                foreach (var target in targets)
-                    if (target && target.TryGetComponent(System.Type.GetType(entry.typeName), out _))
+            for (int i = 0; i < targets.Count; i++)
+            {
+                if (i != 0)
+                    Instantiate(splitLinePrefab, transform);
+                foreach (var entry in GameManager.Instance.gameSettings.contextMenuRegistry)
+                    if (targets[i] && targets[i].TryGetComponent(System.Type.GetType(entry.typeName), out _))
                     {
                         var item = Instantiate(itemPrefab, transform).GetComponent<Button>();
                         item.GetComponentInChildren<TMPro.TMP_Text>().text = entry.label;
-                        item.onClick.AddListener(() => { target.SendMessage(entry.message, SendMessageOptions.DontRequireReceiver); });
+                        item.onClick.AddListener(() => { targets[i].SendMessage(entry.message, SendMessageOptions.DontRequireReceiver); });
                     }
+            }
             UpdateRT();
         }
         private void OnDisable()
