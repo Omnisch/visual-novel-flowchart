@@ -5,7 +5,7 @@ namespace Omnis.Flowchart
 {
     public class NodeRegistry : MonoBehaviour
     {
-        #region Fields
+        #region Serialized Fields
         [SerializeField] private List<Node> nodeList;
         [SerializeField] private List<NodeLink> linkList;
         #endregion
@@ -31,6 +31,16 @@ namespace Omnis.Flowchart
         }
         public bool Remove(Node node) => nodeList.Remove(node);
         public bool Remove(NodeLink link) => linkList.Remove(link);
+        public List<NodeData> NodeData
+        {
+            get
+            {
+                List<NodeData> data = new();
+                foreach (var node in nodeList)
+                    data.Add(new(node.transform.position));
+                return data;
+            }
+        }
         #endregion
 
         #region Functions
@@ -47,5 +57,18 @@ namespace Omnis.Flowchart
             Prioritize(GameManager.Instance.root);
         }
         #endregion
+    }
+
+    [System.Serializable]
+    public struct NodeData
+    {
+        public float x;
+        public float y;
+
+        public NodeData(Vector3 position)
+        {
+            x = position.x;
+            y = position.y;
+        }
     }
 }

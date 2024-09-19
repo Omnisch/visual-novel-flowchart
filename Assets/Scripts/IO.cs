@@ -1,5 +1,6 @@
-using System.Collections;
+using OdinSerializer;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace Omnis.Flowchart
@@ -10,12 +11,11 @@ namespace Omnis.Flowchart
         #endregion
 
         #region Fields
-        private string savePath;
-        private string loadPath;
+        private string filePath;
         #endregion
 
         #region Interfaces
-        public void LoadFilePath()
+        public void GetFilePath()
         {
             var bp = new AnotherFileBrowser.Windows.BrowserProperties
             {
@@ -23,7 +23,18 @@ namespace Omnis.Flowchart
                 filterIndex = 0
             };
 
-            new AnotherFileBrowser.Windows.FileBrowser().OpenFileBrowser(bp, path => loadPath = path);
+            new AnotherFileBrowser.Windows.FileBrowser().OpenFileBrowser(bp, path => filePath = path);
+        }
+        
+        public void SaveFile()
+        {
+            byte[] bytes = SerializationUtility.SerializeValue(GameManager.Instance.nodeRegistry.NodeData, DataFormat.JSON);
+            File.WriteAllBytes(filePath, bytes);
+        }
+        public void LoadFile()
+        {
+            byte[] bytes = File.ReadAllBytes(filePath);
+            SerializationUtility.DeserializeValue<List<NodeData>>(bytes, DataFormat.JSON);
         }
         #endregion
 
