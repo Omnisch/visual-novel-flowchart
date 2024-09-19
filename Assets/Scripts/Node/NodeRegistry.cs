@@ -70,13 +70,6 @@ namespace Omnis.Flowchart
                 nodeList[i].transform.position = new Vector3(nodeList[i].transform.position.x, nodeList[i].transform.position.y, i * -0.1f);
         }
         #endregion
-
-        #region Unity Methods
-        private void Start()
-        {
-            Prioritize(GameManager.Instance.root);
-        }
-        #endregion
     }
 
     public struct FlowchartData

@@ -8,7 +8,6 @@ namespace Omnis.Flowchart
         #region Serialized Fields
         [SerializeField] private NodeMode mode;
         [SerializeField] private List<Sprite> nodeSprites;
-        [SerializeField] private bool canChangeMode;
         #endregion
 
         #region Fields
@@ -49,23 +48,21 @@ namespace Omnis.Flowchart
         {
             inSlot.BreakAll();
             outSlot.BreakAll();
-            ChangeMode(NodeMode.Island);
+            Mode = NodeMode.Island;
         }
         public void RootMode()
         {
             inSlot.BreakAll();
-            ChangeMode(NodeMode.Root);
+            Mode = NodeMode.Root;
         }
-        public void BranchMode() => ChangeMode(NodeMode.Branch);
+        public void BranchMode()
+        {
+            Mode = NodeMode.Branch;
+        }
         public void LeafMode()
         {
             outSlot.BreakAll();
-            ChangeMode(NodeMode.Leaf);
-        }
-        public void ChangeMode(NodeMode newMode)
-        {
-            if (!canChangeMode) return;
-            Mode = newMode;
+            Mode = NodeMode.Leaf;
         }
         #endregion
     }

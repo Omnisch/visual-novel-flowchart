@@ -7,7 +7,6 @@ namespace Omnis.Flowchart
         #region Serialized Fields
         public GameSettings gameSettings;
         public NodeRegistry nodeRegistry;
-        public Node root;
         #endregion
 
         #region Fields
