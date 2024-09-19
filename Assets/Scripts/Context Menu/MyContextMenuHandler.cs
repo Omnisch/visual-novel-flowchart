@@ -52,7 +52,10 @@ namespace Omnis.Flowchart
             StartCoroutine(IHideContextMenu());
         }
 
-        public void CreateNode() => GameManager.Instance.nodeRegistry.NewNode(Camera.main.ScreenToWorldPoint(menu.transform.position));
+        public void CreateNode()
+        {
+            GameManager.Instance.nodeRegistry.NewNode(Camera.main.ScreenToWorldPoint(menu.transform.position));
+        }
         #endregion
 
         #region Functions
@@ -62,7 +65,6 @@ namespace Omnis.Flowchart
         }
         private IEnumerator IShowContextMenu()
         {
-            menu.transform.position = UnityEngine.InputSystem.Mouse.current.position.ReadValue();
             menu.gameObject.SetActive(true);
             yield return new WaitForSecondsRealtime(0.1f);
             if (menu.GetComponent<UnityEngine.UI.Image>())
