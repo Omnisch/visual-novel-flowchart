@@ -17,14 +17,12 @@ namespace Omnis.Flowchart
         public void CreateLinkFrom(Linkable fromPoint)
         {
             var link = Instantiate(GameManager.Instance.gameSettings.linkPrefab).GetComponent<NodeLink>();
-            AddInLink(link);
-            fromPoint.AddOutLink(link);
+            link.Connect(fromPoint, this);
         }
         public void CreateLinkTo(Linkable toPoint)
         {
             var link = Instantiate(GameManager.Instance.gameSettings.linkPrefab).GetComponent<NodeLink>();
-            AddOutLink(link);
-            toPoint.AddInLink(link);
+            link.Connect(this, toPoint);
         }
         public void UpdateLinks()
         {
@@ -35,21 +33,6 @@ namespace Omnis.Flowchart
         {
             while (inLinks.Count > 0) inLinks.First().Break();
             while (outLinks.Count > 0) outLinks.First().Break();
-        }
-        #endregion
-
-        #region Functions
-        protected void AddOutLink(NodeLink link)
-        {
-            link.fromPoint = this;
-            outLinks.Add(link);
-            UpdateLinks();
-        }
-        protected void AddInLink(NodeLink link)
-        {
-            link.toPoint = this;
-            inLinks.Add(link);
-            UpdateLinks();
         }
         #endregion
     }

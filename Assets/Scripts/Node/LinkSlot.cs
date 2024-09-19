@@ -23,7 +23,7 @@ namespace Omnis.Flowchart
             if (!allowIn) return false;
             if (link.fromPoint.master == master) return false;
             if (inLinks.Select(link => link.fromPoint.master).Contains(link.fromPoint.master)) return false;
-            AddInLink(link);
+            link.Connect(link.fromPoint, this);
             return true;
         }
         public bool TryAcceptOutLink(NodeLink link)
@@ -31,7 +31,7 @@ namespace Omnis.Flowchart
             if (!allowOut) return false;
             if (link.toPoint.master == master) return false;
             if (outLinks.Select(link => link.toPoint.master).Contains(link.toPoint.master)) return false;
-            AddOutLink(link);
+            link.Connect(this, link.toPoint);
             return true;
         }
         #endregion

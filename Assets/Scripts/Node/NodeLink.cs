@@ -27,6 +27,16 @@ namespace Omnis.Flowchart
             };
             lineRenderer.SetPositions(positions);
         }
+        public void Connect(Linkable fromPoint, Linkable toPoint)
+        {
+            this.fromPoint = fromPoint;
+            this.toPoint = toPoint;
+            fromPoint.outLinks.Remove(this);
+            fromPoint.outLinks.Add(this);
+            toPoint.inLinks.Remove(this);
+            toPoint.inLinks.Add(this);
+            UpdatePositions();
+        }
         public void Break()
         {
             doNotUpdatePositions = true;
