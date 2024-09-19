@@ -9,13 +9,13 @@ namespace Omnis.Flowchart
         public void CreateLinkFromFloat()
         {
             Vector3 fromPointPos = VectorTweak.xyn(transform.position, -100f);
-            var fromPoint = Instantiate(GameManager.Instance.gameSettings.floatSlotPrefab, fromPointPos, Quaternion.identity).GetComponent<Linkable>();
+            var fromPoint = Instantiate(GameManager.Instance.settings.floatSlotPrefab, fromPointPos, Quaternion.identity).GetComponent<Linkable>();
             CreateLinkFrom(fromPoint);
         }
         public void CreateLinkToFloat()
         {
             Vector3 toPointPos = VectorTweak.xyn(transform.position, -100f);
-            var toPoint = Instantiate(GameManager.Instance.gameSettings.floatSlotPrefab, toPointPos, Quaternion.identity).GetComponent<Linkable>();
+            var toPoint = Instantiate(GameManager.Instance.settings.floatSlotPrefab, toPointPos, Quaternion.identity).GetComponent<Linkable>();
             CreateLinkTo(toPoint);
         }
         public bool TryAcceptInLink(NodeLink link)

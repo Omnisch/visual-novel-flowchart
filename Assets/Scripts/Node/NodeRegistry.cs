@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Omnis.Flowchart
@@ -11,26 +12,6 @@ namespace Omnis.Flowchart
         #endregion
 
         #region Interfaces
-        public Node NewNode() => NewNode(Vector3.zero);
-        public Node NewNode(Vector3 worldPosition)
-        {
-            var newNode = Instantiate(GameManager.Instance.gameSettings.nodePrefab, worldPosition, Quaternion.identity).GetComponent<Node>();
-            return newNode;
-        }
-        public void Prioritize(Node node)
-        {
-            nodeList.Remove(node);
-            nodeList.Add(node);
-
-            UpdateLayer();
-        }
-        public void Prioritize(NodeLink link)
-        {
-            linkList.Remove(link);
-            linkList.Add(link);
-        }
-        public bool Remove(Node node) => nodeList.Remove(node);
-        public bool Remove(NodeLink link) => linkList.Remove(link);
         public FlowchartData Data
         {
             get
@@ -61,6 +42,39 @@ namespace Omnis.Flowchart
                 return data;
             }
         }
+        public void LoadData(FlowchartData newData)
+        {
+            Clear();
+            foreach (var rawNode in newData.nodeData)
+            {
+                var node = NewNode(VectorTweak.V2ToV3xy(rawNode.position));
+                node.Mode = (NodeMode)rawNode.mode;
+                nodeList.Add(node);
+            }
+            foreach (var rawLink in newData.linkData)
+            {
+                NewLink().Connect(nodeList[rawLink.fromPoint].outSlot, nodeList[rawLink.toPoint].inSlot);
+            }
+        }
+        public Node NewNode() => NewNode(Vector3.zero);
+        public Node NewNode(Vector3 worldPosition)
+            => Instantiate(GameManager.Instance.settings.nodePrefab, worldPosition, Quaternion.identity).GetComponent<Node>();
+        public NodeLink NewLink()
+            => Instantiate(GameManager.Instance.settings.linkPrefab).GetComponent<NodeLink>();
+        public void Prioritize(Node node)
+        {
+            nodeList.Remove(node);
+            nodeList.Add(node);
+
+            UpdateLayer();
+        }
+        public void Prioritize(NodeLink link)
+        {
+            linkList.Remove(link);
+            linkList.Add(link);
+        }
+        public bool Remove(Node node) => nodeList.Remove(node);
+        public bool Remove(NodeLink link) => linkList.Remove(link);
         #endregion
 
         #region Functions
@@ -68,6 +82,13 @@ namespace Omnis.Flowchart
         {
             for (int i = 0; i < nodeList.Count; i++)
                 nodeList[i].transform.position = new Vector3(nodeList[i].transform.position.x, nodeList[i].transform.position.y, i * -0.1f);
+        }
+        private void Clear()
+        {
+            while (nodeList.Count > 0)
+                nodeList.First().RemoveSelf();
+            while (linkList.Count > 0)
+                linkList.First().Break();
         }
         #endregion
     }
@@ -79,7 +100,7 @@ namespace Omnis.Flowchart
     }
     public struct NodeData
     {
-        public Vector3 position;
+        public Vector2 position;
         public int mode;
     }
     public struct LinkData

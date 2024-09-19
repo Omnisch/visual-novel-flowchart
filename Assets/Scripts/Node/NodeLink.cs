@@ -42,7 +42,7 @@ namespace Omnis.Flowchart
             doNotUpdatePositions = true;
             fromPoint.outLinks.Remove(this);
             toPoint.inLinks.Remove(this);
-            GameManager.Instance.nodeRegistry.Remove(this);
+            GameManager.Instance.registry.Remove(this);
             Destroy(gameObject);
         }
         #endregion
@@ -52,7 +52,7 @@ namespace Omnis.Flowchart
         {
             lineRenderer = GetComponent<LineRenderer>();
             doNotUpdatePositions = false;
-            GameManager.Instance.nodeRegistry.Prioritize(this);
+            GameManager.Instance.registry.Prioritize(this);
         }
         #endregion
     }

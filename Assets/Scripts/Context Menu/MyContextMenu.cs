@@ -37,7 +37,7 @@ namespace Omnis.Flowchart
             {
                 if (target != targets.First())
                     Instantiate(splitLinePrefab, transform);
-                foreach (var entry in GameManager.Instance.gameSettings.contextMenuRegistry)
+                foreach (var entry in GameManager.Instance.settings.contextMenuRegistry)
                     if (target && target.TryGetComponent(System.Type.GetType(entry.typeName), out _))
                     {
                         var item = Instantiate(itemPrefab, transform).GetComponent<Button>();

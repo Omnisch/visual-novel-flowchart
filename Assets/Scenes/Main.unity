@@ -334,8 +334,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019a9d159e4886c439f91b0095a5ad59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSettings: {fileID: 11400000, guid: 1ce1e5313be86d1468ebcc0a43b77c4a, type: 2}
-  nodeRegistry: {fileID: 481572234}
+  settings: {fileID: 11400000, guid: 1ce1e5313be86d1468ebcc0a43b77c4a, type: 2}
+  registry: {fileID: 481572234}
+  activeNode: {fileID: 0}
   inputField: {fileID: 508238892}
 --- !u!114 &481572233
 MonoBehaviour:

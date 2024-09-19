@@ -33,7 +33,7 @@ namespace Omnis.Flowchart
         #region Functions
         private static void SaveFile(string path)
         {
-            byte[] bytes = SerializationUtility.SerializeValue(GameManager.Instance.nodeRegistry.Data, DataFormat.JSON);
+            byte[] bytes = SerializationUtility.SerializeValue(GameManager.Instance.registry.Data, DataFormat.JSON);
             File.WriteAllBytes(path, bytes);
         }
         private static void LoadFile(string path)

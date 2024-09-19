@@ -18,7 +18,7 @@ namespace Omnis.Flowchart
         {
             inSlot.BreakAll();
             outSlot.BreakAll();
-            GameManager.Instance.nodeRegistry.Remove(this);
+            GameManager.Instance.registry.Remove(this);
             Destroy(gameObject);
         }
         #endregion
@@ -30,7 +30,7 @@ namespace Omnis.Flowchart
 
             spriteRenderer = GetComponent<SpriteRenderer>();
             Mode = mode;
-            GameManager.Instance.nodeRegistry.Prioritize(this);
+            GameManager.Instance.registry.Prioritize(this);
         }
         #endregion
     }

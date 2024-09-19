@@ -40,7 +40,7 @@ namespace Omnis.Flowchart
             }
             else
             {
-                var newNode = GameManager.Instance.nodeRegistry.NewNode();
+                var newNode = GameManager.Instance.registry.NewNode();
                 if (inLinks.Count > 0)
                 {
                     newNode.transform.position = transform.position - newNode.inSlot.transform.localPosition;

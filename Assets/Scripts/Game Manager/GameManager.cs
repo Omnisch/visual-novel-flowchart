@@ -5,12 +5,9 @@ namespace Omnis.Flowchart
     public partial class GameManager : MonoBehaviour
     {
         #region Serialized Fields
-        public GameSettings gameSettings;
-        public NodeRegistry nodeRegistry;
-        #endregion
-
-        #region Fields
-        private Node activeNode;
+        public GameSettings settings;
+        public NodeRegistry registry;
+        [SerializeField] private Node activeNode;
         #endregion
 
         #region Interfaces
