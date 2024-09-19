@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,16 +7,36 @@ namespace Omnis.Flowchart
 {
     public class FloatLinkSlot : Linkable
     {
+        #region Fields
+        private LinkSlot targetSlot;
+        #endregion
+
         #region Interfaces
-        public void TryPassLink()
+        public override bool IsLeftPressed
+        {
+            get => base.IsLeftPressed;
+            set
+            {
+                base.IsLeftPressed = value;
+                if (!value) TryPassLink();
+            }
+        }
+        #endregion
+
+        #region Functions
+        protected override void OnInteracted(List<Collider> hits)
+        {
+            hits.Select(hit => hit.gameObject).ToList().Find(hit => hit.TryGetComponent(out targetSlot));
+        }
+        private void TryPassLink()
         {
             bool succeeded = false;
-            if (GameManager.Instance.TargetSlot)
+            if (targetSlot)
             {
                 if (inLinks.Count > 0)
-                    succeeded = GameManager.Instance.TargetSlot.TryAcceptInLink(inLinks[0]);
+                    succeeded = targetSlot.TryAcceptInLink(inLinks[0]);
                 else if (outLinks.Count > 0)
-                    succeeded = GameManager.Instance.TargetSlot.TryAcceptOutLink(outLinks[0]);
+                    succeeded = targetSlot.TryAcceptOutLink(outLinks[0]);
             }
             else
             {

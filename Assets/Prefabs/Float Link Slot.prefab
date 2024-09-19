@@ -125,9 +125,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 358963572537339904, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
       insertIndex: -1
       addedObject: {fileID: 442354509864170769}
-    - targetCorrespondingSourceObject: {fileID: 358963572537339904, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2277108142291730522}
   m_SourcePrefab: {fileID: 100100000, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
 --- !u!1 &5478370950592482778 stripped
 GameObject:
@@ -152,40 +149,3 @@ MonoBehaviour:
   inLinks: []
   allowOut: 0
   outLinks: []
---- !u!114 &2277108142291730522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5478370950592482778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f3ae4bd446509942b0f112497d6d507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  opaque: 0
-  enterCallback:
-    m_PersistentCalls:
-      m_Calls: []
-  pressCallback:
-    m_PersistentCalls:
-      m_Calls: []
-  releaseCallback:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 442354509864170769}
-        m_TargetAssemblyTypeName: Omnis.BranchTracker.FloatLinkSlot, Assembly-CSharp
-        m_MethodName: TryPassLink
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  exitCallback:
-    m_PersistentCalls:
-      m_Calls: []

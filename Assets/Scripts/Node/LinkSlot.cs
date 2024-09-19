@@ -6,15 +6,6 @@ namespace Omnis.Flowchart
     public class LinkSlot : Linkable
     {
         #region Interfaces
-        public override bool IsPointed
-        {
-            get => base.IsPointed;
-            set
-            {
-                base.IsPointed = value;
-                GameManager.Instance.TargetSlot = value ? this : null;
-            }
-        }
         public void CreateLinkFromFloat()
         {
             Vector3 fromPointPos = VectorTweak.xyn(transform.position, -100f);

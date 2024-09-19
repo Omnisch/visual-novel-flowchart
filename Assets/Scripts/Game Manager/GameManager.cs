@@ -25,7 +25,6 @@ namespace Omnis.Flowchart
                 UpdateInputFieldText();
             }
         }
-        public LinkSlot TargetSlot { get; set; }
         #endregion
 
         #region Unity Methods
