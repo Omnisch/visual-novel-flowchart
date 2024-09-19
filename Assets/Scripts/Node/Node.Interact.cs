@@ -28,6 +28,7 @@ namespace Omnis.Flowchart
             if (IsLeftPressed)
             {
                 transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + cursorOffset;
+                transform.position = VectorTweak.xyn(VectorTweak.GridSnap(transform.position, GameManager.Instance.settings.gridSnapIncrement), transform.position);
                 inSlot.UpdateLinks();
                 outSlot.UpdateLinks();
             }

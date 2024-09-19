@@ -15,6 +15,7 @@ MonoBehaviour:
   nodePrefab: {fileID: 490290849265041124, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
   linkPrefab: {fileID: 19799689446025064, guid: 1dbc788a25851894eaec96af39f3727f, type: 3}
   floatSlotPrefab: {fileID: 5478370950592482778, guid: 521ef0b72b5b075489cdcd626f860401, type: 3}
+  gridSnapIncrement: 0.5
   contextMenuRegistry:
   - typeName: Omnis.Flowchart.Node
     label: Root

@@ -10,6 +10,8 @@ namespace Omnis.Flowchart
         public GameObject nodePrefab;
         public GameObject linkPrefab;
         public GameObject floatSlotPrefab;
+        [Tooltip("Set 0 to disable grid snapping.")]
+        public float gridSnapIncrement;
         [Header("Context Menu")]
         public List<ContextMenuEntry> contextMenuRegistry;
     }
