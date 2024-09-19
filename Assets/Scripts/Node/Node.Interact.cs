@@ -35,7 +35,11 @@ namespace Omnis.Flowchart
         #endregion
 
         #region Functions
-        protected override void OnInteracted(List<Collider> hits) { GameManager.Instance.ActiveNode = this; }
+        protected override void OnInteracted(List<Collider> hits)
+        {
+            GameManager.Instance.nodeRegistry.Prioritize(this);
+            GameManager.Instance.ActiveNode = this;
+        }
         #endregion
     }
 }

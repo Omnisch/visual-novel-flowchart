@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 481572233}
   - component: {fileID: 481572235}
   - component: {fileID: 481572234}
+  - component: {fileID: 481572236}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -407,6 +408,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 481572233}
   debugLogic: {fileID: 1625562243}
+--- !u!114 &481572236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481572229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f45629b3e340a241afc8779fb197067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &508238890
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,50 +901,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1344798113
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1344798115}
-  - component: {fileID: 1344798114}
-  m_Layer: 0
-  m_Name: IO
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1344798114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344798113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f45629b3e340a241afc8779fb197067, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1344798115
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344798113}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1409512434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1115,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1219,8 +1188,8 @@ MonoBehaviour:
   callback:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1344798114}
-        m_TargetAssemblyTypeName: Omnis.BranchTracker.IO, Assembly-CSharp
+      - m_Target: {fileID: 481572236}
+        m_TargetAssemblyTypeName: Omnis.Flowchart.IO, Assembly-CSharp
         m_MethodName: LoadFilePath
         m_Mode: 1
         m_Arguments:
@@ -1604,7 +1573,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 963194228}
   - {fileID: 1297887273}
-  - {fileID: 1344798115}
   - {fileID: 1518291694}
   - {fileID: 1818676138}
   - {fileID: 147304671}

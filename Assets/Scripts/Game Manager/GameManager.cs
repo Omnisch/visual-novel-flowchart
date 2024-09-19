@@ -21,7 +21,6 @@ namespace Omnis.Flowchart
             set
             {
                 activeNode = value;
-                nodeRegistry.Prioritize(activeNode);
                 UpdateInputFieldText();
             }
         }

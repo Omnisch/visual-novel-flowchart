@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,10 @@ namespace Omnis.Flowchart
         private void UpdateRT()
         {
             RectTransform rt = GetComponent<RectTransform>();
-            rt.sizeDelta = new Vector2(200f, Mathf.Max(20f, transform.childCount * 40f + 4f));
+            float menuHeight = 4f;
+            for (int i = 0; i < transform.childCount; i++)
+                menuHeight += transform.GetChild(i).GetComponent<RectTransform>().rect.height;
+            rt.sizeDelta = new Vector2(200f, Mathf.Max(20f, menuHeight));
             var targetPos = UnityEngine.InputSystem.Mouse.current.position.ReadValue();
             rt.pivot = new(
                 targetPos.x > Screen.width - rt.sizeDelta.x ? 1f : 0f,
@@ -29,16 +33,16 @@ namespace Omnis.Flowchart
         #region Unity Methods
         private void OnEnable()
         {
-            for (int i = 0; i < targets.Count; i++)
+            foreach (var target in targets)
             {
-                if (i != 0)
+                if (target != targets.First())
                     Instantiate(splitLinePrefab, transform);
                 foreach (var entry in GameManager.Instance.gameSettings.contextMenuRegistry)
-                    if (targets[i] && targets[i].TryGetComponent(System.Type.GetType(entry.typeName), out _))
+                    if (target && target.TryGetComponent(System.Type.GetType(entry.typeName), out _))
                     {
                         var item = Instantiate(itemPrefab, transform).GetComponent<Button>();
                         item.GetComponentInChildren<TMPro.TMP_Text>().text = entry.label;
-                        item.onClick.AddListener(() => { targets[i].SendMessage(entry.message, SendMessageOptions.DontRequireReceiver); });
+                        item.onClick.AddListener(() => { target.SendMessage(entry.message, SendMessageOptions.DontRequireReceiver); });
                     }
             }
             UpdateRT();
