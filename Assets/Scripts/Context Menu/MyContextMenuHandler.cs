@@ -56,6 +56,11 @@ namespace Omnis.Flowchart
         {
             GameManager.Instance.nodeRegistry.NewNode(Camera.main.ScreenToWorldPoint(menu.transform.position));
         }
+        public void SaveFile() => IO.OpenFileBrowser(OpenFileBrowserOperation.Save);
+        public void LoadFile()
+        {
+            IO.OpenFileBrowser(OpenFileBrowserOperation.Load);
+        }
         #endregion
 
         #region Functions

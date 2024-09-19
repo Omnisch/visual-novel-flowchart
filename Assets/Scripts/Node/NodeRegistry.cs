@@ -31,13 +31,33 @@ namespace Omnis.Flowchart
         }
         public bool Remove(Node node) => nodeList.Remove(node);
         public bool Remove(NodeLink link) => linkList.Remove(link);
-        public List<NodeData> NodeData
+        public FlowchartData Data
         {
             get
             {
-                List<NodeData> data = new();
-                foreach (var node in nodeList)
-                    data.Add(new(node.transform.position));
+                FlowchartData data = new();
+                {
+                    List<NodeData> nodesData = new();
+                    foreach (var node in nodeList)
+                    {
+                        NodeData nodeData = new();
+                        nodeData.position = node.transform.position;
+                        nodeData.mode = (int)node.Mode;
+                        nodesData.Add(nodeData);
+                    }
+                    data.nodeData = nodesData;
+                }
+                {
+                    List<LinkData> linksData = new();
+                    foreach (var link in linkList)
+                    {
+                        LinkData linkData = new();
+                        linkData.fromPoint = nodeList.FindIndex(node => node == link.fromPoint.master);
+                        linkData.toPoint = nodeList.FindIndex(node => node == link.toPoint.master);
+                        linksData.Add(linkData);
+                    }
+                    data.linkData = linksData;
+                }
                 return data;
             }
         }
@@ -59,16 +79,19 @@ namespace Omnis.Flowchart
         #endregion
     }
 
-    [System.Serializable]
+    public struct FlowchartData
+    {
+        public List<NodeData> nodeData;
+        public List<LinkData> linkData;
+    }
     public struct NodeData
     {
-        public float x;
-        public float y;
-
-        public NodeData(Vector3 position)
-        {
-            x = position.x;
-            y = position.y;
-        }
+        public Vector3 position;
+        public int mode;
+    }
+    public struct LinkData
+    {
+        public int fromPoint;
+        public int toPoint;
     }
 }

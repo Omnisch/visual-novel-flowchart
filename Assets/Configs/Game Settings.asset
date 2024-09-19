@@ -31,3 +31,9 @@ MonoBehaviour:
   - typeName: Omnis.Flowchart.MyContextMenuHandler
     label: Create Node
     message: CreateNode
+  - typeName: Omnis.Flowchart.MyContextMenuHandler
+    label: Save
+    message: SaveFile
+  - typeName: Omnis.Flowchart.MyContextMenuHandler
+    label: Load
+    message: LoadFile

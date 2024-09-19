@@ -1,44 +1,48 @@
+using AnotherFileBrowser.Windows;
 using OdinSerializer;
-using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 
 namespace Omnis.Flowchart
 {
-    public class IO : MonoBehaviour
+    public class IO
     {
         #region Serialized Fields
-        #endregion
-
-        #region Fields
-        private string filePath;
+        public static FlowchartData data;
         #endregion
 
         #region Interfaces
-        public void GetFilePath()
+        public static void OpenFileBrowser(OpenFileBrowserOperation op)
         {
-            var bp = new AnotherFileBrowser.Windows.BrowserProperties
+            var bp = new BrowserProperties
             {
                 filter = "Visual novel flowchart files (*.txt, *.vnf) | *.txt; *.vnf",
                 filterIndex = 0
             };
 
-            new AnotherFileBrowser.Windows.FileBrowser().OpenFileBrowser(bp, path => filePath = path);
-        }
-        
-        public void SaveFile()
-        {
-            byte[] bytes = SerializationUtility.SerializeValue(GameManager.Instance.nodeRegistry.NodeData, DataFormat.JSON);
-            File.WriteAllBytes(filePath, bytes);
-        }
-        public void LoadFile()
-        {
-            byte[] bytes = File.ReadAllBytes(filePath);
-            SerializationUtility.DeserializeValue<List<NodeData>>(bytes, DataFormat.JSON);
+            new FileBrowser().OpenFileBrowser(bp, path => {
+                switch (op) {
+                    case OpenFileBrowserOperation.Save:
+                        SaveFile(path); break;
+                    case OpenFileBrowserOperation.Load:
+                        LoadFile(path); break;
+                }
+            });
         }
         #endregion
 
         #region Functions
+        private static void SaveFile(string path)
+        {
+            byte[] bytes = SerializationUtility.SerializeValue(GameManager.Instance.nodeRegistry.Data, DataFormat.JSON);
+            File.WriteAllBytes(path, bytes);
+        }
+        private static void LoadFile(string path)
+        {
+            byte[] bytes = File.ReadAllBytes(path);
+            data = SerializationUtility.DeserializeValue<FlowchartData>(bytes, DataFormat.JSON);
+        }
         #endregion
     }
+
+    public enum OpenFileBrowserOperation { Save, Load }
 }
