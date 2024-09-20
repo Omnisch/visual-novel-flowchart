@@ -15,7 +15,7 @@ namespace Omnis.Flowchart
         {
             var bp = new BrowserProperties
             {
-                filter = "Visual novel flowchart files (*.vnfl, *.json) | *.vnfl; *.json",
+                filter = "Visual novel flowchart files (*.vnf, *.json) | *.vnf; *.json",
                 filterIndex = 0
             };
 

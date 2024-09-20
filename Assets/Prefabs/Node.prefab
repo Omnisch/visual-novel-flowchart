@@ -126,14 +126,12 @@ MonoBehaviour:
   opaque: 1
   inSlot: {fileID: 8323023529674706632}
   outSlot: {fileID: 1090102740439594693}
-  childOffset: {x: 0.5, y: -2.8, z: 0}
   mode: 2
   nodeSprites:
   - {fileID: 21300000, guid: 90ef1ccbd9ecd8543b8add32a36b5981, type: 3}
   - {fileID: 21300000, guid: 12b6eb6855428394288a805bab4b9dc6, type: 3}
   - {fileID: 21300000, guid: 803da07ebd6c3224d8cf3fc665927c5e, type: 3}
   - {fileID: 21300000, guid: fbc6c1c3363225c4b971b8c014548df9, type: 3}
-  canChangeMode: 1
   display: {fileID: 1430500277223284620}
   description: 
 --- !u!1 &2257762521695421312
@@ -193,7 +191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1566947655884223597, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
+  - {fileID: -916646916112535675, guid: 98d0dfa5a450f044f9ea711689ef94ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -237,8 +235,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
-  m_sharedMaterial: {fileID: 1566947655884223597, guid: 8f72098d0afa2844d949d59037766fa8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98d0dfa5a450f044f9ea711689ef94ee, type: 2}
+  m_sharedMaterial: {fileID: -916646916112535675, guid: 98d0dfa5a450f044f9ea711689ef94ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
