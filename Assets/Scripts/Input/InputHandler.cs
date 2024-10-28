@@ -1,3 +1,6 @@
+// author: Omnistudio
+// version: 2024.10.28
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,14 +8,18 @@ using UnityEngine.InputSystem;
 
 namespace Omnis
 {
+    /// <summary>
+    /// Hooked with .inputactions in the new Input System.
+    /// </summary>
+    [RequireComponent(typeof(PlayerInput))]
     public class InputHandler : MonoBehaviour
     {
         #region Serialized Fields
-        [SerializeField] protected PlayerInput playerInput;
         [SerializeField] protected Logic debugLogic;
         #endregion
 
         #region Fields
+        private PlayerInput playerInput;
         private List<Collider> PointerHits;
         #endregion
 
@@ -25,7 +32,6 @@ namespace Omnis
         #endregion
 
         #region Functions
-        protected void FlushInput() {}
         protected void ForwardMessage(string methodName, object value = null)
         {
             foreach (var hit in PointerHits)
@@ -40,20 +46,20 @@ namespace Omnis
         #region Unity Methods
         private void Start()
         {
+            playerInput = GetComponent<PlayerInput>();
+
             foreach (var map in playerInput.actions.actionMaps)
                 map.Enable();
 
             PointerHits = new();
         }
-
         private void OnEnable()
         {
-            playerInput.enabled = true;
+            if (playerInput) playerInput.enabled = true;
         }
-
         private void OnDisable()
         {
-            playerInput.enabled = false;
+            if (playerInput) playerInput.enabled = false;
         }
         #endregion
 

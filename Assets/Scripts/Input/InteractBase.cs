@@ -1,3 +1,6 @@
+// author: Omnistudio
+// version: 2024.10.28
+
 using System.Collections.Generic;
 using UnityEngine;
 
