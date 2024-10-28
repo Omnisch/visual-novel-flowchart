@@ -1,22 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Omnis.Flowchart
+namespace Omnis
 {
-    public partial class GameManager
+    public abstract class InstancedMonoBehaviour : MonoBehaviour
     {
         #region Fields
-        private static GameManager instance;
-        #endregion
-
-        #region Interfaces
-        public static GameManager Instance => instance;
+        protected static InstancedMonoBehaviour instance;
         #endregion
 
         #region Functions
         private bool EnsureSingleton()
         {
-            if (Instance != null && Instance != this)
+            if (instance != null && instance != this)
             {
                 Destroy(gameObject);
                 return false;
@@ -33,6 +29,22 @@ namespace Omnis.Flowchart
         {
             yield return new WaitUntil(() => gameObject.scene.isLoaded);
             DontDestroyOnLoad(gameObject);
+        }
+
+        /// <summary>
+        /// Do not use Unity method Awake(),
+        /// because it's occupied.<br/>
+        /// Use OnAwake() instead.
+        /// </summary>
+        protected abstract void OnAwake();
+        #endregion
+
+        #region Unity Methods
+        protected void Awake()
+        {
+            if (!EnsureSingleton())
+                return;
+            OnAwake();
         }
         #endregion
     }
