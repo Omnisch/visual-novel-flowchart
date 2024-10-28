@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Omnis.Flowchart
 {
-    public partial class GameManager : InstancedMonoBehaviour
+    public partial class GameManager : MonoBehaviour
     {
         #region Serialized Fields
         public GameSettings settings;
@@ -11,7 +11,6 @@ namespace Omnis.Flowchart
         #endregion
 
         #region Interfaces
-        public static GameManager Instance => instance as GameManager;
         public Node ActiveNode
         {
             get => activeNode;
@@ -23,11 +22,13 @@ namespace Omnis.Flowchart
         }
         #endregion
 
-        #region Functions
-        protected override void OnAwake() {}
-        #endregion
-
         #region Unity Methods
+        private void Awake()
+        {
+            if (!EnsureSingleton())
+                return;
+        }
+
         private void Update()
         {
             if (ActiveNode) ActiveNode.OnUpdate();
