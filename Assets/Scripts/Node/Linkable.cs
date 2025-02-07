@@ -7,6 +7,7 @@ namespace Omnis.Flowchart
     {
         #region Serialized Fields
         public Node master;
+        public int key;
         public bool allowIn;
         public List<Link> inLinks;
         public bool allowOut;

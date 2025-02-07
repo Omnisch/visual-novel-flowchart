@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 358963572537339904, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6519951643980896072, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,6 +65,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
       propertyPath: master
       value: 
       objectReference: {fileID: 3554193410838980348}
@@ -106,7 +110,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7532919838571359519}
         m_TargetAssemblyTypeName: Omnis.Flowchart.LinkSlot, Assembly-CSharp
-        m_MethodName: CreateLinkToFloat
+        m_MethodName: CreateLinkFromFloat
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -227,6 +231,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
+      propertyPath: key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925048507536422214, guid: 5e87340e009bf554e9376b0df06986db, type: 3}
       propertyPath: master
       value: 
       objectReference: {fileID: 3554193410838980348}
@@ -310,7 +318,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 490290849265041124, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
       propertyPath: m_Name
-      value: RelNode
+      value: Node Rel
       objectReference: {fileID: 0}
     - target: {fileID: 911485168890973070, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
       propertyPath: m_IsActive
@@ -425,9 +433,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opaque: 1
-  inSlot: {fileID: 3834016368492154583}
-  outSlot: {fileID: 5302050634339219162}
-  mode: 5
+  inSlots:
+  - {fileID: 3834016368492154583}
+  - {fileID: 7532919838571359519}
+  outSlots:
+  - {fileID: 5302050634339219162}
+  - {fileID: 5314035453249000980}
+  mode: 6
   nodeSprites:
   - {fileID: 21300000, guid: 90ef1ccbd9ecd8543b8add32a36b5981, type: 3}
   - {fileID: 21300000, guid: 12b6eb6855428394288a805bab4b9dc6, type: 3}
@@ -435,10 +447,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fbc6c1c3363225c4b971b8c014548df9, type: 3}
   - {fileID: 21300000, guid: cfe7becbaf0ed664d867b452b10319c4, type: 3}
   - {fileID: 21300000, guid: a64d460f788a9f84cb15c247d28db5b1, type: 3}
+  - {fileID: 21300000, guid: 248df30890804d947a038fdc0b99bef2, type: 3}
   display: {fileID: 6155945921147658131}
   description: 
-  leftSlot: {fileID: 7532919838571359519}
-  rightSlot: {fileID: 5314035453249000980}
 --- !u!114 &5302050634339219162 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1090102740439594693, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}

@@ -124,8 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opaque: 1
-  inSlot: {fileID: 8323023529674706632}
-  outSlot: {fileID: 1090102740439594693}
+  inSlots:
+  - {fileID: 8323023529674706632}
+  outSlots:
+  - {fileID: 1090102740439594693}
   mode: 2
   nodeSprites:
   - {fileID: 21300000, guid: 90ef1ccbd9ecd8543b8add32a36b5981, type: 3}
@@ -134,6 +136,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fbc6c1c3363225c4b971b8c014548df9, type: 3}
   - {fileID: 21300000, guid: cfe7becbaf0ed664d867b452b10319c4, type: 3}
   - {fileID: 21300000, guid: a64d460f788a9f84cb15c247d28db5b1, type: 3}
+  - {fileID: 21300000, guid: 248df30890804d947a038fdc0b99bef2, type: 3}
   display: {fileID: 1430500277223284620}
   description: 
 --- !u!1 &2257762521695421312

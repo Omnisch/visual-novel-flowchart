@@ -38,7 +38,8 @@ namespace Omnis.Flowchart
                         LinkData linkData = new()
                         {
                             fromPoint = nodeList.FindIndex(node => node == link.fromPoint.master),
-                            toPoint = nodeList.FindIndex(node => node == link.toPoint.master)
+                            toPoint = nodeList.FindIndex(node => node == link.toPoint.master),
+                            slotKey = link.fromPoint.key,
                         };
                         linksData.Add(linkData);
                     }
@@ -60,7 +61,7 @@ namespace Omnis.Flowchart
             }
             foreach (var rawLink in newData.linkData)
             {
-                NewLink().Connect(nodeList[rawLink.fromPoint].outSlot, nodeList[rawLink.toPoint].inSlot);
+                NewLink().Connect(nodeList[rawLink.fromPoint].outSlots[rawLink.slotKey], nodeList[rawLink.toPoint].inSlots[rawLink.slotKey]);
             }
         }
         public Node NewNode() => NewNode(Vector3.zero);

@@ -14,10 +14,8 @@ namespace Omnis.Flowchart.Relationship
 
             EditorTweak.Script(target, typeof(RelNode));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("opaque"), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("inSlot"), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("outSlot"), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("leftSlot"), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("rightSlot"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("inSlots"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("outSlots"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("nodeSprites"), true);
             var mode = serializedObject.FindProperty("mode");
             EditorGUILayout.PropertyField(mode, true);

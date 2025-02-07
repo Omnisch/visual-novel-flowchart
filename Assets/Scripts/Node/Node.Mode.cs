@@ -23,15 +23,15 @@ namespace Omnis.Flowchart
                 mode = value;
                 if (spriteRenderer)
                     spriteRenderer.sprite = nodeSprites[(int)mode];
-                if (inSlot)
-                    inSlot.gameObject.SetActive(value switch
+                if (inSlots.Count > 0 && inSlots[0])
+                    inSlots[0].gameObject.SetActive(value switch
                     {
                         NodeMode.Island => false,
                         NodeMode.Root => false,
                         _ => true
                     });
-                if (outSlot)
-                    outSlot.gameObject.SetActive(value switch
+                if (outSlots.Count > 0 && outSlots[0])
+                    outSlots[0].gameObject.SetActive(value switch
                     {
                         NodeMode.Island => false,
                         NodeMode.Leaf => false,
@@ -41,13 +41,13 @@ namespace Omnis.Flowchart
         }
         public void IslandMode()
         {
-            inSlot.BreakAll();
-            outSlot.BreakAll();
+            if (inSlots.Count > 0 && inSlots[0]) inSlots[0].BreakAll();
+            if (outSlots.Count > 0 && outSlots[0]) outSlots[0].BreakAll();
             Mode = NodeMode.Island;
         }
         public void RootMode()
         {
-            inSlot.BreakAll();
+            if (inSlots.Count > 0 && inSlots[0]) inSlots[0].BreakAll();
             Mode = NodeMode.Root;
         }
         public void BranchMode()
@@ -56,7 +56,7 @@ namespace Omnis.Flowchart
         }
         public void LeafMode()
         {
-            outSlot.BreakAll();
+            if (outSlots.Count > 0 && outSlots[0]) outSlots[0].BreakAll();
             Mode = NodeMode.Leaf;
         }
         #endregion

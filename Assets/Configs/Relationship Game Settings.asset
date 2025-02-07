@@ -22,7 +22,10 @@ MonoBehaviour:
     message: RightOutMode
   - typeName: Omnis.Flowchart.Relationship.RelNode
     label: Female
-    message: LeftOutMode
+    message: LeftInMode
+  - typeName: Omnis.Flowchart.Relationship.RelNode
+    label: Unisex
+    message: LeftRightMode
   - typeName: Omnis.Flowchart.ContextMenuHandler
     label: Create Node
     message: CreateNode

@@ -1,23 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using UnityEngine;
 
 namespace Omnis.Flowchart.Relationship
 {
     public class RelNode : Node
     {
-        #region Serialized fields
-        public Linkable leftSlot;
-        public Linkable rightSlot;
-        #endregion
-
-        #region Fields
-        #endregion
-
-        #region Properties
-        #endregion
-
         #region Public functions
         public override NodeMode Mode
         {
@@ -25,30 +11,36 @@ namespace Omnis.Flowchart.Relationship
             set
             {
                 base.Mode = value;
-                if (leftSlot)
-                    leftSlot.gameObject.SetActive(value switch
+                if (inSlots.Count > 1 && inSlots[1])
+                    inSlots[1].gameObject.SetActive(value switch
                     {
-                        NodeMode.LeftOut => true,
+                        NodeMode.LeftIn => true,
+                        NodeMode.LeftRight => true,
                         _ => false
                     });
-                if (rightSlot)
-                    rightSlot.gameObject.SetActive(value switch
+                if (outSlots.Count > 1 && outSlots[1])
+                    outSlots[1].gameObject.SetActive(value switch
                     {
                         NodeMode.RightOut => true,
+                        NodeMode.LeftRight => true,
                         _ => false
                     });
             }
         }
 
-        public void LeftOutMode()
+        public void LeftInMode()
         {
-            rightSlot.BreakAll();
-            Mode = NodeMode.LeftOut;
+            if (outSlots.Count > 1 && outSlots[1]) outSlots[1].BreakAll();
+            Mode = NodeMode.LeftIn;
         }
         public void RightOutMode()
         {
-            leftSlot.BreakAll();
+            if (inSlots.Count > 1 && inSlots[1]) inSlots[1].BreakAll();
             Mode = NodeMode.RightOut;
+        }
+        public void LeftRightMode()
+        {
+            Mode = NodeMode.LeftRight;
         }
         #endregion
 

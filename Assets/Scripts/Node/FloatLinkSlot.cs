@@ -31,25 +31,25 @@ namespace Omnis.Flowchart
         private void TryPassLink()
         {
             bool succeeded = false;
-            if (targetSlot)
+            if (targetSlot && (targetSlot.key == key))
             {
                 if (inLinks.Count > 0)
                     succeeded = targetSlot.TryAcceptInLink(inLinks[0]);
                 else if (outLinks.Count > 0)
                     succeeded = targetSlot.TryAcceptOutLink(outLinks[0]);
             }
-            else
+            else if (!targetSlot)
             {
                 var newNode = GameManager.Instance.registry.NewNode();
                 if (inLinks.Count > 0)
                 {
-                    newNode.transform.position = transform.position - newNode.inSlot.transform.localPosition;
-                    succeeded = (newNode.inSlot as LinkSlot).TryAcceptInLink(inLinks[0]);
+                    newNode.transform.position = transform.position - newNode.inSlots[key].transform.localPosition;
+                    succeeded = (newNode.inSlots[key] as LinkSlot).TryAcceptInLink(inLinks[0]);
                 }
                 else if (outLinks.Count > 0)
                 {
-                    newNode.transform.position = transform.position - newNode.outSlot.transform.localPosition;
-                    succeeded = (newNode.outSlot as LinkSlot).TryAcceptOutLink(outLinks[0]);
+                    newNode.transform.position = transform.position - newNode.outSlots[key].transform.localPosition;
+                    succeeded = (newNode.outSlots[key] as LinkSlot).TryAcceptOutLink(outLinks[0]);
                 }
             }
 

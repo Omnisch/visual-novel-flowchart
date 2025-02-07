@@ -14,8 +14,8 @@ namespace Omnis.Flowchart
 
             EditorTweak.Script(target, typeof(Node));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("opaque"), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("inSlot"), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("outSlot"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("inSlots"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("outSlots"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("nodeSprites"), true);
             var mode = serializedObject.FindProperty("mode");
             EditorGUILayout.PropertyField(mode, true);

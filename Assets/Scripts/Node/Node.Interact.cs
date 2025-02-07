@@ -29,8 +29,8 @@ namespace Omnis.Flowchart
             {
                 transform.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) + cursorOffset;
                 transform.position = VectorTweak.XYN(VectorTweak.GridSnap(transform.position, GameManager.Instance.settings.gridSnapIncrement), transform.position);
-                inSlot.UpdateLinks();
-                outSlot.UpdateLinks();
+                inSlots.ForEach((slot) => slot.UpdateLinks());
+                outSlots.ForEach((slot) => slot.UpdateLinks());
             }
         }
         #endregion

@@ -9,8 +9,9 @@ namespace Omnis.Flowchart
         Root,
         Branch,
         Leaf,
-        LeftOut,
-        RightOut
+        LeftIn,
+        RightOut,
+        LeftRight,
     }
 
     public struct FlowchartData
@@ -28,5 +29,6 @@ namespace Omnis.Flowchart
     {
         public int fromPoint;
         public int toPoint;
+        public int slotKey;
     }
 }
