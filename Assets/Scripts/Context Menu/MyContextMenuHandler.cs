@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Omnis.Flowchart
 {
@@ -47,13 +48,19 @@ namespace Omnis.Flowchart
         public void CallContextMenu()
         {
             StopAllCoroutines();
-            StartCoroutine(IShowContextMenu());
+            menu.gameObject.SetActive(true);
+            StartCoroutine(YieldTweaker.Lerp((value) => {
+                menu.GetComponent<CanvasGroup>().alpha = value;
+            }, 15f));
         }
 
         public void HideContextMenu()
         {
             StopAllCoroutines();
-            StartCoroutine(IHideContextMenu());
+            StartCoroutine(YieldTweaker.Lerp((value) => {
+                menu.GetComponent<CanvasGroup>().alpha = 1f - value;
+                if (value == 1f) menu.gameObject.SetActive(false);
+            }, 30f));
         }
 
         public void CreateNode()
@@ -69,20 +76,6 @@ namespace Omnis.Flowchart
         protected override void OnInteracted(List<Collider> hits)
         {
             menu.targets = hits.Select(hit => hit.gameObject).ToList();
-        }
-        private IEnumerator IShowContextMenu()
-        {
-            menu.gameObject.SetActive(true);
-            yield return new WaitForSecondsRealtime(0.1f);
-            if (menu.GetComponent<UnityEngine.UI.Image>())
-                menu.GetComponent<UnityEngine.UI.Image>().color = new(1f, 1f, 1f, 1f);
-        }
-        private IEnumerator IHideContextMenu()
-        {
-            if (menu.GetComponent<UnityEngine.UI.Image>())
-                menu.GetComponent<UnityEngine.UI.Image>().color = new(1f, 1f, 1f, 0.6f);
-            yield return new WaitForSecondsRealtime(0.1f);
-            menu.gameObject.SetActive(false);
         }
         #endregion
 

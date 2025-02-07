@@ -686,6 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033299352}
   - component: {fileID: 1033299354}
+  - component: {fileID: 1033299357}
   - component: {fileID: 1033299353}
   - component: {fileID: 1033299355}
   - component: {fileID: 1033299356}
@@ -728,7 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.98039216}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -794,6 +795,18 @@ MonoBehaviour:
   itemPrefab: {fileID: 4252349445112600804, guid: cdbab997821b5c3488e9a10e1eb07fa5, type: 3}
   splitLinePrefab: {fileID: 2101447512201566776, guid: a2a1486dae2d2bc439dbc715ed4b8d45, type: 3}
   targets: []
+--- !u!225 &1033299357
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033299351}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1297887270
 GameObject:
   m_ObjectHideFlags: 0
