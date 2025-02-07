@@ -62,7 +62,7 @@ namespace Omnis.Flowchart
         }
         public void SaveFile() => IO.OpenBrowserAndSaveFile(GameManager.Instance.registry.Data, ioExtensions);
         public void LoadFile()
-            => GameManager.Instance.registry.LoadData(IO.OpenBrowserAndLoadFile<FlowchartData>(ioExtensions));
+            => IO.OpenBrowserAndLoadFile<FlowchartData>((data) => GameManager.Instance.registry.LoadData(data), ioExtensions);
         #endregion
 
         #region Functions
