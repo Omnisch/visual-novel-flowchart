@@ -4,11 +4,11 @@
 #if !UNITY_WEBGL
 using AnotherFileBrowser.Windows;
 #else
+using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 #endif
 using OdinSerializer;
-using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;

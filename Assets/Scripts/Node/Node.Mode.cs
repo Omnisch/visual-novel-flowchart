@@ -66,12 +66,4 @@ namespace Omnis.Flowchart
         }
         #endregion
     }
-
-    public enum NodeMode
-    {
-        Island,
-        Root,
-        Branch,
-        Leaf
-    }
 }
