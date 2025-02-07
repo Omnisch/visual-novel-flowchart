@@ -21,10 +21,12 @@ namespace Omnis.Flowchart
                     List<NodeData> nodesData = new();
                     foreach (var node in nodeList)
                     {
-                        NodeData nodeData = new();
-                        nodeData.position = node.transform.position;
-                        nodeData.mode = (int)node.Mode;
-                        nodeData.description = node.Description;
+                        NodeData nodeData = new()
+                        {
+                            position = node.transform.position,
+                            mode = (int)node.Mode,
+                            description = node.Description
+                        };
                         nodesData.Add(nodeData);
                     }
                     data.nodeData = nodesData;
@@ -33,9 +35,11 @@ namespace Omnis.Flowchart
                     List<LinkData> linksData = new();
                     foreach (var link in linkList)
                     {
-                        LinkData linkData = new();
-                        linkData.fromPoint = nodeList.FindIndex(node => node == link.fromPoint.master);
-                        linkData.toPoint = nodeList.FindIndex(node => node == link.toPoint.master);
+                        LinkData linkData = new()
+                        {
+                            fromPoint = nodeList.FindIndex(node => node == link.fromPoint.master),
+                            toPoint = nodeList.FindIndex(node => node == link.toPoint.master)
+                        };
                         linksData.Add(linkData);
                     }
                     data.linkData = linksData;

@@ -2,20 +2,22 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Omnis.Flowchart
+namespace Omnis.Flowchart.Relationship
 {
-    [CustomEditor(typeof(Node))]
+    [CustomEditor(typeof(RelNode))]
     [CanEditMultipleObjects]
-    public class NodeCustomEditor : Editor
+    public class RelNodeCustomEditor : NodeCustomEditor
     {
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
-            EditorTweak.Script(target, typeof(Node));
+            EditorTweak.Script(target, typeof(RelNode));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("opaque"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("inSlot"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("outSlot"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("leftSlot"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("rightSlot"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("nodeSprites"), true);
             var mode = serializedObject.FindProperty("mode");
             EditorGUILayout.PropertyField(mode, true);

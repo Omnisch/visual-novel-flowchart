@@ -15,7 +15,7 @@ namespace Omnis.Flowchart
         #endregion
 
         #region Interfaces
-        public NodeMode Mode
+        public virtual NodeMode Mode
         {
             get => mode;
             set
@@ -23,25 +23,20 @@ namespace Omnis.Flowchart
                 mode = value;
                 if (spriteRenderer)
                     spriteRenderer.sprite = nodeSprites[(int)mode];
-                switch (value)
-                {
-                    case NodeMode.Island:
-                        inSlot.gameObject.SetActive(false);
-                        outSlot.gameObject.SetActive(false);
-                        break;
-                    case NodeMode.Root:
-                        inSlot.gameObject.SetActive(false);
-                        outSlot.gameObject.SetActive(true);
-                        break;
-                    case NodeMode.Branch:
-                        inSlot.gameObject.SetActive(true);
-                        outSlot.gameObject.SetActive(true);
-                        break;
-                    case NodeMode.Leaf:
-                        inSlot.gameObject.SetActive(true);
-                        outSlot.gameObject.SetActive(false);
-                        break;
-                }
+                if (inSlot)
+                    inSlot.gameObject.SetActive(value switch
+                    {
+                        NodeMode.Island => false,
+                        NodeMode.Root => false,
+                        _ => true
+                    });
+                if (outSlot)
+                    outSlot.gameObject.SetActive(value switch
+                    {
+                        NodeMode.Island => false,
+                        NodeMode.Leaf => false,
+                        _ => true
+                    });
             }
         }
         public void IslandMode()
