@@ -13,10 +13,6 @@ namespace Omnis.Flowchart
         [SerializeField] private ContextMenu menu;
         #endregion
 
-        #region Fields
-        private readonly string ioExtensions = "Visual novel flowchart files (*.vnf, *.json) | *.vnf; *.json";
-        #endregion
-
         #region Interfaces
         public override bool IsLeftPressed
         {
@@ -67,9 +63,9 @@ namespace Omnis.Flowchart
         {
             GameManager.Instance.registry.NewNode(Camera.main.ScreenToWorldPoint(menu.transform.position));
         }
-        public void SaveFile() => IO.OpenBrowserAndSaveFile(GameManager.Instance.registry.Data, ioExtensions);
+        public void SaveFile() => IO.OpenBrowserAndSaveFile(GameManager.Instance.registry.Data);
         public void LoadFile()
-            => IO.OpenBrowserAndLoadFile<FlowchartData>((data) => GameManager.Instance.registry.LoadData(data), ioExtensions);
+            => IO.OpenBrowserAndLoadFile<FlowchartData>((data) => GameManager.Instance.registry.LoadData(data));
         #endregion
 
         #region Functions

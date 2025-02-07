@@ -8,6 +8,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 #endif
 using OdinSerializer;
+using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,42 +18,58 @@ namespace Omnis
     /// <summary>
     /// Requiring packages: AnotherFileBrowser, OdinSerializer.
     /// </summary>
-    public class IO : MonoBehaviour
+    public partial class IO : MonoBehaviour
     {
+        #region Fields
+        private static readonly string extensionFilter = "Visual novel flowchart saves (*.json) | *.json";
+        #endregion
+
         #region Interfaces
 #if UNITY_WEBGL
         // JS to Unity
         private static byte[] rawData;
-        public void SetRawData(string rawData) => IO.rawData = System.Convert.FromBase64String(rawData);
+        private void SetRawDataFromJavaScript(string rawData) => IO.rawData = System.Convert.FromBase64String(rawData);
 
 
         // Unity to JS
         [DllImport("__Internal")]
-        private static extern void OpenHTMLFilePicker();
+        private static extern void HtmlOpenFilePicker();
+        [DllImport("__Internal")]
+        private static extern void HtmlSaveFile(string fileName, IntPtr dataPtr, int dataLength);
 
 
-        public static void OpenBrowserAndSaveFile<T>(T dataToSave, string extensionFilter) {}
-        public static void OpenBrowserAndLoadFile<T>(UnityAction<T> callback, string extensionFilter)
+        public static void OpenBrowserAndSaveFile<T>(T dataT)
         {
-            StartCoroutine(IOpenBrowserAndLoadFile(callback, extensionFilter));
+            byte[] data = SerializeData(dataT);
+
+            IntPtr dataPtr = Marshal.AllocHGlobal(data.Length);
+            Marshal.Copy(data, 0, dataPtr, data.Length);
+
+            HtmlSaveFile($"save-{DateTime.Now:yyyyMMdd-HHmmss}.json", dataPtr, data.Length);
+
+            Marshal.FreeHGlobal(dataPtr);
         }
-        private static IEnumerator IOpenBrowserAndLoadFile<T>(UnityAction<T> callback, string extensionFilter)
+        public static void OpenBrowserAndLoadFile<T>(UnityAction<T> callback)
+        {
+            Instance.StartCoroutine(IOpenBrowserAndLoadFile(callback));
+        }
+        private static IEnumerator IOpenBrowserAndLoadFile<T>(UnityAction<T> callback)
         {
             rawData = null;
-            OpenHTMLFilePicker();
+            HtmlOpenFilePicker();
             yield return new WaitUntil(() => rawData != null);
             callback?.Invoke(DeserializeData<T>(rawData));
         }
 #else
         /// <param name="extensionFilter">Format: "description (*.ext1, *.ext2) | *.ext1; *.ext2"</param>
-        public static void OpenBrowserAndSaveFile<T>(T dataToSave, string extensionFilter)
+        public static void OpenBrowserAndSaveFile<T>(T dataToSave)
         {
             BrowserProperties bp = new() { filter = extensionFilter, filterIndex = 0 };
 
             new FileBrowser().OpenFileBrowser(bp, path => SaveFile(dataToSave, path));
         }
         /// <param name="extensionFilter">Format: "description (*.ext1, *.ext2) | *.ext1; *.ext2"</param>
-        public static void OpenBrowserAndLoadFile<T>(UnityAction<T> callback, string extensionFilter)
+        public static void OpenBrowserAndLoadFile<T>(UnityAction<T> callback)
         {
             BrowserProperties bp = new() { filter = extensionFilter, filterIndex = 0 };
 
@@ -65,13 +82,10 @@ namespace Omnis
         #endregion
 
         #region Functions
-        private static void SaveFile<T>(T dataToSave, string path)
-        {
-            byte[] bytes = SerializationUtility.SerializeValue(dataToSave, DataFormat.JSON);
-            File.WriteAllBytes(path, bytes);
-        }
+        private static void SaveFile<T>(T dataT, string path) => File.WriteAllBytes(path, SerializeData(dataT));
         private static T LoadFile<T>(string path) => DeserializeData<T>(File.ReadAllBytes(path));
-        private static T DeserializeData<T>(byte[] bytes) => SerializationUtility.DeserializeValue<T>(bytes, DataFormat.JSON);
+        private static byte[] SerializeData<T>(T dataT) => SerializationUtility.SerializeValue(dataT, DataFormat.JSON);
+        private static T DeserializeData<T>(byte[] dataB) => SerializationUtility.DeserializeValue<T>(dataB, DataFormat.JSON);
         #endregion
     }
 }
