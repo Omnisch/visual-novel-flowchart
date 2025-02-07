@@ -29,12 +29,12 @@ MonoBehaviour:
   - typeName: Omnis.Flowchart.Node
     label: Island
     message: IslandMode
-  - typeName: Omnis.Flowchart.MyContextMenuHandler
+  - typeName: Omnis.Flowchart.ContextMenuHandler
     label: Create Node
     message: CreateNode
-  - typeName: Omnis.Flowchart.MyContextMenuHandler
+  - typeName: Omnis.Flowchart.ContextMenuHandler
     label: Save
     message: SaveFile
-  - typeName: Omnis.Flowchart.MyContextMenuHandler
+  - typeName: Omnis.Flowchart.ContextMenuHandler
     label: Load
     message: LoadFile

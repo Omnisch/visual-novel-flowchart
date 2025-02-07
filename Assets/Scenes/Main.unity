@@ -674,6 +674,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1409512435}
+  - {fileID: 1910234260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1033299351
@@ -789,7 +790,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033299351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be59839c05f2d3428c871f59f35cfe7, type: 3}
+  m_Script: {fileID: 11500000, guid: e0f0ea16903536b41a45f36e770f48e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4252349445112600804, guid: cdbab997821b5c3488e9a10e1eb07fa5, type: 3}
@@ -901,7 +902,6 @@ GameObject:
   - component: {fileID: 1409512435}
   - component: {fileID: 1409512437}
   - component: {fileID: 1409512436}
-  - component: {fileID: 1409512438}
   m_Layer: 0
   m_Name: Viewport Input Panel
   m_TagString: Untagged
@@ -918,7 +918,7 @@ Transform:
   m_GameObject: {fileID: 1409512434}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -961,20 +961,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 94, y: 40, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1409512438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409512434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b319a789b95004896ef9537ea16deb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  opaque: 0
-  menu: {fileID: 1033299356}
 --- !u!1 &1469537361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1419,74 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &1910234259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1910234260}
+  - component: {fileID: 1910234263}
+  - component: {fileID: 1910234261}
+  m_Layer: 0
+  m_Name: Context Menu Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1910234260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910234259}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 963194228}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910234261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910234259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b319a789b95004896ef9537ea16deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opaque: 0
+  menu: {fileID: 1033299356}
+--- !u!65 &1910234263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910234259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 94, y: 40, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1952289667
 GameObject:
   m_ObjectHideFlags: 0
