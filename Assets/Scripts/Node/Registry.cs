@@ -45,6 +45,7 @@ namespace Omnis.Flowchart
         }
         public void LoadData(FlowchartData newData)
         {
+            if (newData.nodeData == null) return;
             Clear();
             foreach (var rawNode in newData.nodeData)
             {
