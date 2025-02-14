@@ -29,6 +29,9 @@ MonoBehaviour:
   - typeName: Omnis.Flowchart.Node
     label: Island
     message: IslandMode
+  - typeName: Omnis.Flowchart.Node
+    label: Remove
+    message: RemoveSelf
   - typeName: Omnis.Flowchart.ContextMenuHandler
     label: Create Node
     message: CreateNode

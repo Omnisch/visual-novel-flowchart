@@ -1,8 +1,6 @@
-using System.Runtime.InteropServices;
-
-namespace Omnis.Flowchart.Relationship
+namespace Omnis.Flowchart.Kinship
 {
-    public class RelNode : Node
+    public class NodeKin : Node
     {
         #region Public functions
         public override NodeMode Mode
@@ -42,11 +40,6 @@ namespace Omnis.Flowchart.Relationship
         {
             Mode = NodeMode.LeftRight;
         }
-        #endregion
-
-        #region Functions
-        [DllImport("__Internal")]
-        private static extern void relationship();
         #endregion
     }
 }

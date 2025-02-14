@@ -10,22 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5925e3ddc0068ad45b8e3cb6d4b7671b, type: 3}
-  m_Name: Relationship Game Settings
+  m_Name: Kinship Game Settings
   m_EditorClassIdentifier: 
   nodePrefab: {fileID: 4645925572192091899, guid: 1828aee40795dd64ea9a095ac1039e38, type: 3}
   linkPrefab: {fileID: 19799689446025064, guid: 1dbc788a25851894eaec96af39f3727f, type: 3}
   floatSlotPrefab: {fileID: 5478370950592482778, guid: 521ef0b72b5b075489cdcd626f860401, type: 3}
   gridSnapIncrement: 0.5
   contextMenuRegistry:
-  - typeName: Omnis.Flowchart.Relationship.RelNode
+  - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Male
     message: RightOutMode
-  - typeName: Omnis.Flowchart.Relationship.RelNode
+  - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Female
     message: LeftInMode
-  - typeName: Omnis.Flowchart.Relationship.RelNode
+  - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Unisex
     message: LeftRightMode
+  - typeName: Omnis.Flowchart.Kinship.NodeKin
+    label: Break
+    message: BreakAllLinks
+  - typeName: Omnis.Flowchart.Kinship.NodeKin
+    label: Remove
+    message: RemoveSelf
   - typeName: Omnis.Flowchart.ContextMenuHandler
     label: Create Node
     message: CreateNode

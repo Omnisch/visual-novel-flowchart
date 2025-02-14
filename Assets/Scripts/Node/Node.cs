@@ -14,10 +14,14 @@ namespace Omnis.Flowchart
         #region Interfaces
         public List<Node> Parents => inSlots[0].inLinks.Select(link => link.fromPoint.master).ToList();
         public List<Node> Children => outSlots[0].outLinks.Select(link => link.toPoint.master).ToList();
-        public void RemoveSelf()
+        public void BreakAllLinks()
         {
             inSlots.ForEach((slot) => slot.BreakAll());
             outSlots.ForEach((slot) => slot.BreakAll());
+        }
+        public void RemoveSelf()
+        {
+            BreakAllLinks();
             GameManager.Instance.registry.Remove(this);
             Destroy(gameObject);
         }

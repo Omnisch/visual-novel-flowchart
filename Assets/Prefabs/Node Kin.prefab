@@ -328,6 +328,14 @@ PrefabInstance:
       propertyPath: master
       value: 
       objectReference: {fileID: 3554193410838980348}
+    - target: {fileID: 3904981871580121079, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377346706687367886, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 248df30890804d947a038fdc0b99bef2, type: 3}
     - target: {fileID: 5768886847337785726, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -367,6 +375,10 @@ PrefabInstance:
     - target: {fileID: 5768886847337785726, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173663378557246336, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8072629256249078659, guid: 7583b675fa799eb4483ab00d19888f2c, type: 3}
       propertyPath: m_IsActive
