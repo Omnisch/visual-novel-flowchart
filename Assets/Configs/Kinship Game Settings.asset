@@ -19,13 +19,13 @@ MonoBehaviour:
   contextMenuRegistry:
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Male
-    message: RightOutMode
+    message: SetMale
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Female
-    message: LeftInMode
+    message: SetFemale
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Unisex
-    message: LeftRightMode
+    message: SetUnisex
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Break
     message: BreakAllLinks
