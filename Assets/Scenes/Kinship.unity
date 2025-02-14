@@ -817,11 +817,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Node Kin
       objectReference: {fileID: 0}
+    - target: {fileID: 8751839835852126146, guid: 1828aee40795dd64ea9a095ac1039e38, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -916646916112535675, guid: 98d0dfa5a450f044f9ea711689ef94ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6476553750723953567, guid: 1828aee40795dd64ea9a095ac1039e38, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1317416880978275663, guid: 1828aee40795dd64ea9a095ac1039e38, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1828aee40795dd64ea9a095ac1039e38, type: 3}
@@ -1142,7 +1149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1204d25d13c1b4846b3ec69c7bd6f699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  query: "\u7238\u7238\u7684\u7238\u7238"
 --- !u!1 &1678374346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,5 +1655,5 @@ SceneRoots:
   - {fileID: 1995764622}
   - {fileID: 445827248}
   - {fileID: 667627812}
-  - {fileID: 1169286269}
   - {fileID: 1534051697}
+  - {fileID: 1169286269}

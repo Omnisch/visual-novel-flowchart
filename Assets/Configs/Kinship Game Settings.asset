@@ -32,6 +32,9 @@ MonoBehaviour:
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Remove
     message: RemoveSelf
+  - typeName: Omnis.Flowchart.Kinship.NodeKin
+    label: Search
+    message: BeginKinship
   - typeName: Omnis.Flowchart.ContextMenuHandler
     label: Create Node
     message: CreateNode

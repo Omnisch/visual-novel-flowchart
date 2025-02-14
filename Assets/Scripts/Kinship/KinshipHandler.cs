@@ -1,38 +1,28 @@
+using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Omnis.Flowchart.Kinship
 {
-    public class KinshipHandler : MonoBehaviour
+    public partial class KinshipHandler : MonoBehaviour
     {
-        #region Serialized fields
-        [SerializeField] private string query;
-        #endregion
-
-        #region Fields
-        #endregion
-
-        #region Properties
-        #endregion
-
         #region Public functions
-        public void GetRelationship()
+        public string TranslateKinship(string query)
         {
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
-                Debug.Log(Marshal.PtrToStringAuto(Relationship(query)));
+                string rawAnswer = Marshal.PtrToStringAuto(Relationship(query));
+                var answers = rawAnswer.Trim('[', ']').Split(',').Select((e) => e.Trim(' ', '\'', '\"')).ToArray();
+                return answers[0];
             }
             else
-                Debug.Log("Not supported on this platform.");
+                return "WebGL Only";
         }
         #endregion
 
         #region Functions
         [DllImport("__Internal")]
         private static extern System.IntPtr Relationship(string query);
-        #endregion
-
-        #region Unity methods
         #endregion
     }
 }

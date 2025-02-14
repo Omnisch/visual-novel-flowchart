@@ -32,6 +32,7 @@ namespace Omnis.Flowchart.Kinship
             EditorTweak.Header("Text");
             EditorGUILayout.PropertyField(serializedObject.FindProperty("display"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("description"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("kinship"), true);
 
             serializedObject.ApplyModifiedProperties();
         }
