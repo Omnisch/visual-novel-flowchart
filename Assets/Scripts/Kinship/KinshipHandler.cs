@@ -12,8 +12,8 @@ namespace Omnis.Flowchart.Kinship
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
                 string rawAnswer = Marshal.PtrToStringAuto(Relationship(query));
-                var answers = rawAnswer.Trim('[', ']').Split(',').Select((e) => e.Trim(' ', '\'', '\"')).ToArray();
-                return answers[0];
+                string[] answers = rawAnswer.Trim('[', ']').Split(',').Select((e) => e.Trim(' ', '\'', '\"')).ToArray();
+                return string.Join('/', answers);
             }
             else
                 return "WebGL Only";

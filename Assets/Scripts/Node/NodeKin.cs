@@ -9,34 +9,11 @@ namespace Omnis.Flowchart.Kinship
         #endregion
 
         #region Fields
+        private GenderEnum gender;
         private bool traversed;
         #endregion
 
         #region Properties
-        private GenderEnum gender;
-        public GenderEnum Gender
-        {
-            get => gender;
-            private set
-            {
-                gender = value;
-                switch (value)
-                {
-                    case GenderEnum.Female:
-                        if (outSlots.Count > 1 && outSlots[1]) outSlots[1].BreakAll();
-                        Mode = NodeMode.LeftIn;
-                        break;
-                    case GenderEnum.Male:
-                        if (inSlots.Count > 1 && inSlots[1]) inSlots[1].BreakAll();
-                        Mode = NodeMode.RightOut;
-                        break;
-                    case GenderEnum.Unisex:
-                        Mode = NodeMode.LeftRight;
-                        break;
-                }
-            }
-        }
-
         public override NodeMode Mode
         {
             get => base.Mode;
@@ -44,28 +21,42 @@ namespace Omnis.Flowchart.Kinship
             {
                 base.Mode = value;
                 if (inSlots.Count > 1 && inSlots[1])
+                {
+                    if (value == NodeMode.RightOut)
+                        inSlots[1].BreakAll();
                     inSlots[1].gameObject.SetActive(value switch
                     {
                         NodeMode.LeftIn => true,
                         NodeMode.LeftRight => true,
                         _ => false
                     });
+                }
                 if (outSlots.Count > 1 && outSlots[1])
+                {
+                    if (value == NodeMode.LeftIn)
+                        outSlots[1].BreakAll();
                     outSlots[1].gameObject.SetActive(value switch
                     {
                         NodeMode.RightOut => true,
                         NodeMode.LeftRight => true,
                         _ => false
                     });
+                }
+                gender = value switch
+                {
+                    NodeMode.RightOut => GenderEnum.Male,
+                    NodeMode.LeftIn => GenderEnum.Female,
+                    _ => GenderEnum.Unisex
+                };
             }
         }
         #endregion
 
         #region Public functions
-        public void SetMale() => Gender = GenderEnum.Male;
-        public void SetFemale() => Gender = GenderEnum.Female;
-        public void SetUnisex() => Gender = GenderEnum.Unisex;
-        public void BeginKinship()
+        public void RightOutMode() => Mode = NodeMode.RightOut;
+        public void LeftInMode() => Mode = NodeMode.LeftIn;
+        public void LeftRightMode() => Mode = NodeMode.LeftRight;
+        public void QueryKinship()
         {
             RecursivelySetTraversed(false);
             RecursivelySetKinship();
@@ -95,10 +86,10 @@ namespace Omnis.Flowchart.Kinship
             traversed = true;
 
             string myKinship = "";
-            if (fromKinship == "") myKinship = "我";
+            if (fromKinship == "") myKinship = "自己";
             else
             {
-                myKinship = fromKinship + "的" + Gender switch
+                myKinship = fromKinship + "的" + gender switch
                 {
                     GenderEnum.Male => relativeKinship switch
                     {
@@ -120,31 +111,23 @@ namespace Omnis.Flowchart.Kinship
             inSlots[0].inLinks.ForEach((link) => {
                 link.fromPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "父母");
             });
-            inSlots[1].inLinks.ForEach((link) => {
-                link.fromPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "配偶");
-            });
             outSlots[0].outLinks.ForEach((link) => {
                 link.toPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "子女");
+            });
+            inSlots[1].inLinks.ForEach((link) => {
+                link.fromPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "配偶");
             });
             outSlots[1].outLinks.ForEach((link) => {
                 link.toPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "配偶");
             });
         }
         #endregion
-
-        #region Unity Methods
-        protected override void Start()
-        {
-            base.Start();
-            SetUnisex();
-        }
-        #endregion
     }
 
     public enum GenderEnum
     {
-        Female,
-        Male,
         Unisex,
+        Male,
+        Female,
     }
 }

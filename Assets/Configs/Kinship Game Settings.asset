@@ -18,23 +18,23 @@ MonoBehaviour:
   gridSnapIncrement: 0.5
   contextMenuRegistry:
   - typeName: Omnis.Flowchart.Kinship.NodeKin
+    label: Query
+    message: QueryKinship
+  - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Male
-    message: SetMale
+    message: RightOutMode
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Female
-    message: SetFemale
+    message: LeftInMode
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Unisex
-    message: SetUnisex
+    message: LeftRightMode
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Break
     message: BreakAllLinks
   - typeName: Omnis.Flowchart.Kinship.NodeKin
     label: Remove
     message: RemoveSelf
-  - typeName: Omnis.Flowchart.Kinship.NodeKin
-    label: Search
-    message: BeginKinship
   - typeName: Omnis.Flowchart.ContextMenuHandler
     label: Create Node
     message: CreateNode

@@ -24,41 +24,33 @@ namespace Omnis.Flowchart
                 if (spriteRenderer)
                     spriteRenderer.sprite = nodeSprites[(int)mode];
                 if (inSlots.Count > 0 && inSlots[0])
+                {
+                    if (value == NodeMode.Island || value == NodeMode.Root)
+                        inSlots[0].BreakAll();
                     inSlots[0].gameObject.SetActive(value switch
                     {
                         NodeMode.Island => false,
                         NodeMode.Root => false,
                         _ => true
                     });
+                }
                 if (outSlots.Count > 0 && outSlots[0])
+                {
+                    if (value == NodeMode.Island || value == NodeMode.Leaf)
+                        outSlots[0].BreakAll();
                     outSlots[0].gameObject.SetActive(value switch
                     {
                         NodeMode.Island => false,
                         NodeMode.Leaf => false,
                         _ => true
                     });
+                }
             }
         }
-        public void IslandMode()
-        {
-            if (inSlots.Count > 0 && inSlots[0]) inSlots[0].BreakAll();
-            if (outSlots.Count > 0 && outSlots[0]) outSlots[0].BreakAll();
-            Mode = NodeMode.Island;
-        }
-        public void RootMode()
-        {
-            if (inSlots.Count > 0 && inSlots[0]) inSlots[0].BreakAll();
-            Mode = NodeMode.Root;
-        }
-        public void BranchMode()
-        {
-            Mode = NodeMode.Branch;
-        }
-        public void LeafMode()
-        {
-            if (outSlots.Count > 0 && outSlots[0]) outSlots[0].BreakAll();
-            Mode = NodeMode.Leaf;
-        }
+        public void IslandMode() => Mode = NodeMode.Island;
+        public void RootMode() => Mode = NodeMode.Root;
+        public void BranchMode() => Mode = NodeMode.Branch;
+        public void LeafMode() => Mode = NodeMode.Leaf;
         #endregion
     }
 }
