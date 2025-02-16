@@ -8,14 +8,14 @@ namespace Omnis.Flowchart
         #region Interfaces
         public void CreateLinkFromFloat()
         {
-            Vector3 fromPointPos = VectorTweak.XYN(transform.position, -100f);
+            Vector3 fromPointPos = VectorTweaker.xyn(transform.position, -100f);
             var fromPoint = Instantiate(GameManager.Instance.settings.floatSlotPrefab, fromPointPos, Quaternion.identity).GetComponent<Linkable>();
             fromPoint.key = key;
             CreateLinkFrom(fromPoint);
         }
         public void CreateLinkToFloat()
         {
-            Vector3 toPointPos = VectorTweak.XYN(transform.position, -100f);
+            Vector3 toPointPos = VectorTweaker.xyn(transform.position, -100f);
             var toPoint = Instantiate(GameManager.Instance.settings.floatSlotPrefab, toPointPos, Quaternion.identity).GetComponent<Linkable>();
             toPoint.key = key;
             CreateLinkTo(toPoint);

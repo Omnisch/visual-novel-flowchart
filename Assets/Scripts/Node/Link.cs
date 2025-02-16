@@ -22,8 +22,8 @@ namespace Omnis.Flowchart
             if (!fromPoint || !toPoint) return;
 
             Vector3[] positions = {
-                VectorTweak.XYN(fromPoint.transform.position, -100f),
-                VectorTweak.XYN(toPoint.transform.position, -100f)
+                VectorTweaker.xyn(fromPoint.transform.position, -100f),
+                VectorTweaker.xyn(toPoint.transform.position, -100f)
             };
             lineRenderer.SetPositions(positions);
         }

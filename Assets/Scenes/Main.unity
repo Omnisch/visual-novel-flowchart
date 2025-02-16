@@ -326,6 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: 1ce1e5313be86d1468ebcc0a43b77c4a, type: 2}
   registry: {fileID: 481572234}
+  viewport: {fileID: 1409512436}
   activeNode: {fileID: 0}
   inputField: {fileID: 508238892}
 --- !u!114 &481572233

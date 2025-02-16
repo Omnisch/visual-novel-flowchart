@@ -58,10 +58,9 @@ namespace Omnis.Flowchart
         }
 
         public void CreateNode()
-        {
-            GameManager.Instance.registry.NewNode(Camera.main.ScreenToWorldPoint(menu.transform.position));
-        }
-        public void SaveFile() => IO.OpenBrowserAndSaveFile(GameManager.Instance.registry.Data);
+            => GameManager.Instance.CreateNode(Camera.main.ScreenToWorldPoint(menu.transform.position));
+        public void SaveFile()
+            => IO.OpenBrowserAndSaveFile(GameManager.Instance.registry.Data);
         public void LoadFile()
             => IO.OpenBrowserAndLoadFile<FlowchartData>((data) => GameManager.Instance.registry.LoadData(data));
         #endregion

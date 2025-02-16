@@ -61,7 +61,7 @@ namespace Omnis.Flowchart
         #region Unity Methods
         private void Update()
         {
-            transform.position = VectorTweak.XYN(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), transform.position.z);
+            transform.position = VectorTweaker.xyn(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), transform.position.z);
             UpdateLinks();
         }
         #endregion

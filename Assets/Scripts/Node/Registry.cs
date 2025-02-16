@@ -54,7 +54,7 @@ namespace Omnis.Flowchart
             Clear();
             foreach (var rawNode in newData.nodeData)
             {
-                var node = NewNode(VectorTweak.V2ToV3xy(rawNode.position));
+                var node = NewNode(VectorTweaker.V2ToV3xy(rawNode.position));
                 node.Mode = (NodeMode)rawNode.mode;
                 node.Description = rawNode.description;
                 nodeList.Add(node);

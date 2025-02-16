@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Omnis.Flowchart
 {
-    // Add this script to a collider binding to the cam that you want to control.
+    // Add this script to a collider binding to the xy cam that you want to control.
     public class ViewportInputHandler : InteractBase
     {
         #region Serialized Fields
@@ -17,7 +17,7 @@ namespace Omnis.Flowchart
         private Vector3 cursorOffset;
         #endregion
 
-        #region Interfaces
+        #region Properties
         public override bool IsLeftPressed
         {
             get => base.IsLeftPressed;
@@ -53,6 +53,21 @@ namespace Omnis.Flowchart
                 scrollScale = Mathf.Clamp(value, scrollLimit.x, scrollLimit.y);
                 cam.orthographicSize = anchorCam.orthographicSize = scrollScale;
             }
+        }
+        #endregion
+
+        #region Public Functions
+        public void ForceMoveTo(Vector2 target)
+        {
+            StopAllCoroutines();
+            Interactable = false;
+            var startPosition = cam.transform.position;
+            var targetPosition = VectorTweaker.V2ToV3xy(target, startPosition.z);
+            StartCoroutine(YieldTweaker.Lerp((value) =>
+            {
+                cam.transform.position = anchorCam.transform.position = Vector3.Lerp(startPosition, targetPosition, value);
+                if (value == 1) Interactable = true;
+            }, 10f));
         }
         #endregion
 
