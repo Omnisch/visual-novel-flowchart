@@ -9,6 +9,9 @@ namespace Omnis.Flowchart.Kinship
         #endregion
 
         #region Fields
+        private static readonly string[] unisexKin = { "◊‘º∫", "∏∏ƒ∏", "∏Á∏ÁΩ„Ω„", "µ‹µ‹√√√√", "◊”≈Æ", "∞Æ»À" };
+        private static readonly string[] maleKin = { "◊‘º∫", "∏∏«◊", "∏Á∏Á", "µ‹µ‹", "∂˘◊”", "’…∑Ú" };
+        private static readonly string[] femaleKin = { "◊‘º∫", "ƒ∏«◊", "Ω„Ω„", "√√√√", "≈Æ∂˘", "∆ﬁ◊”" };
         private GenderEnum gender;
         private bool traversed;
         #endregion
@@ -80,45 +83,54 @@ namespace Omnis.Flowchart.Kinship
                 });
             });
         }
-        private void RecursivelySetKinship(string fromKinship = "", string relativeKinship = "")
+        private void RecursivelySetKinship(int kinIndex = 0, int seniority = 0, string fromKinship = "", NodeKin fromNode = null)
         {
             if (traversed) return;
             traversed = true;
 
             string myKinship = "";
-            if (fromKinship == "") myKinship = "◊‘º∫";
-            else
+
+            if (fromKinship != "")
+                myKinship = fromKinship + "µƒ";
+
+            if (seniority > 0) myKinship += StringTweaker.NumberToHanCardinal(seniority.ToString());
+
+            myKinship += gender switch
             {
-                myKinship = fromKinship + "µƒ" + gender switch
-                {
-                    GenderEnum.Male => relativeKinship switch
-                    {
-                        "∏∏ƒ∏" => "∏∏«◊",
-                        "◊”≈Æ" => "∂˘◊”",
-                        _ => "’…∑Ú"
-                    },
-                    GenderEnum.Female => relativeKinship switch
-                    {
-                        "∏∏ƒ∏" => "ƒ∏«◊",
-                        "◊”≈Æ" => "≈Æ∂˘",
-                        _ => "∆ﬁ◊”"
-                    },
-                    _ => relativeKinship
-                };
-            }
+                GenderEnum.Male => maleKin[kinIndex],
+                GenderEnum.Female => femaleKin[kinIndex],
+                _ => unisexKin[kinIndex]
+            };
             kinship.text = KinshipHandler.Instance.TranslateKinship(myKinship);
 
             inSlots[0].inLinks.ForEach((link) => {
-                link.fromPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "∏∏ƒ∏");
+                link.fromPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(1, 0, myKinship, this);
             });
-            outSlots[0].outLinks.ForEach((link) => {
-                link.toPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "◊”≈Æ");
-            });
+            if (fromNode)
+            {
+                bool younger = false;
+                for (int i = 0; i < outSlots[0].outLinks.Count; i++)
+                {
+                    var child = outSlots[0].outLinks[i].toPoint.master.GetComponent<NodeKin>();
+                    if (child == fromNode)
+                    {
+                        younger = true;
+                        continue;
+                    }
+                    child.RecursivelySetKinship(younger ? 3 : 2, i + 1, fromKinship);
+                }
+            }
+            else
+            {
+                outSlots[0].outLinks.ForEach((link) => {
+                    link.toPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(4, 0, myKinship);
+                });
+            }
             inSlots[1].inLinks.ForEach((link) => {
-                link.fromPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "≈‰≈º");
+                link.fromPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(5, 0, myKinship);
             });
             outSlots[1].outLinks.ForEach((link) => {
-                link.toPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(myKinship, "≈‰≈º");
+                link.toPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(5, 0, myKinship);
             });
         }
         #endregion
