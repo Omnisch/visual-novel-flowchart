@@ -24,6 +24,7 @@ namespace Omnis.Flowchart
                         NodeData nodeData = new()
                         {
                             position = node.transform.position,
+                            pairHash = node.pairHash,
                             mode = (int)node.Mode,
                             description = node.Description
                         };
@@ -52,11 +53,25 @@ namespace Omnis.Flowchart
         {
             if (newData.nodeData == null) return;
             Clear();
+            Dictionary<string, Node> hashTable = new();
             foreach (var rawNode in newData.nodeData)
             {
                 var node = NewNode(VectorTweaker.V2ToV3xy(rawNode.position));
+                node.pairHash = rawNode.pairHash;
                 node.Mode = (NodeMode)rawNode.mode;
                 node.Description = rawNode.description;
+                if (rawNode.pairHash != "")
+                {
+                    if (hashTable.ContainsKey(rawNode.pairHash))
+                    {
+                        node.copy = hashTable[rawNode.pairHash];
+                        hashTable[rawNode.pairHash].copy = node;
+                    }
+                    else
+                    {
+                        hashTable[rawNode.pairHash] = node;
+                    }
+                }
                 nodeList.Add(node);
             }
             foreach (var rawLink in newData.linkData)

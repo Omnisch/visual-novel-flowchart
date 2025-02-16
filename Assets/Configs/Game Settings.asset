@@ -30,6 +30,9 @@ MonoBehaviour:
     label: Island
     message: IslandMode
   - typeName: Omnis.Flowchart.Node
+    label: Copy
+    message: ToCopy
+  - typeName: Omnis.Flowchart.Node
     label: Remove
     message: RemoveSelf
   - typeName: Omnis.Flowchart.ContextMenuHandler

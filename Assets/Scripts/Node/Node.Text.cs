@@ -9,15 +9,20 @@ namespace Omnis.Flowchart
         [SerializeField] private string description;
         #endregion
 
-        #region Interfaces
+        #region Properties
         public string Description
         {
             get => description;
             set
             {
-                if (value.Length > 50) description = value.Substring(0, 50);
-                else description = value;
+                if (syncked == true) return;
+                syncked = true;
+
+                description = value;
                 display.text = description;
+
+                if (copy) copy.Description = value;
+                syncked = false;
             }
         }
         #endregion

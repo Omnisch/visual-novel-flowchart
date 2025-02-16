@@ -16,45 +16,6 @@ namespace Omnis.Flowchart.Kinship
         private bool traversed;
         #endregion
 
-        #region Properties
-        public override NodeMode Mode
-        {
-            get => base.Mode;
-            set
-            {
-                base.Mode = value;
-                if (inSlots.Count > 1 && inSlots[1])
-                {
-                    if (value == NodeMode.RightOut)
-                        inSlots[1].BreakAll();
-                    inSlots[1].gameObject.SetActive(value switch
-                    {
-                        NodeMode.LeftIn => true,
-                        NodeMode.LeftRight => true,
-                        _ => false
-                    });
-                }
-                if (outSlots.Count > 1 && outSlots[1])
-                {
-                    if (value == NodeMode.LeftIn)
-                        outSlots[1].BreakAll();
-                    outSlots[1].gameObject.SetActive(value switch
-                    {
-                        NodeMode.RightOut => true,
-                        NodeMode.LeftRight => true,
-                        _ => false
-                    });
-                }
-                gender = value switch
-                {
-                    NodeMode.RightOut => GenderEnum.Male,
-                    NodeMode.LeftIn => GenderEnum.Female,
-                    _ => GenderEnum.Unisex
-                };
-            }
-        }
-        #endregion
-
         #region Public functions
         public void RightOutMode() => Mode = NodeMode.RightOut;
         public void LeftInMode() => Mode = NodeMode.LeftIn;
@@ -67,6 +28,37 @@ namespace Omnis.Flowchart.Kinship
         #endregion
 
         #region Functions
+        protected override void OnModeChanged(NodeMode value)
+        {
+            if (inSlots.Count > 1 && inSlots[1])
+            {
+                if (value == NodeMode.RightOut)
+                    inSlots[1].BreakAll();
+                inSlots[1].gameObject.SetActive(value switch
+                {
+                    NodeMode.LeftIn => true,
+                    NodeMode.LeftRight => true,
+                    _ => false
+                });
+            }
+            if (outSlots.Count > 1 && outSlots[1])
+            {
+                if (value == NodeMode.LeftIn)
+                    outSlots[1].BreakAll();
+                outSlots[1].gameObject.SetActive(value switch
+                {
+                    NodeMode.RightOut => true,
+                    NodeMode.LeftRight => true,
+                    _ => false
+                });
+            }
+            gender = value switch
+            {
+                NodeMode.RightOut => GenderEnum.Male,
+                NodeMode.LeftIn => GenderEnum.Female,
+                _ => GenderEnum.Unisex
+            };
+        }
         private void RecursivelySetTraversed(bool traversed)
         {
             if (this.traversed == traversed) return;
@@ -82,6 +74,8 @@ namespace Omnis.Flowchart.Kinship
                     link.toPoint.master.GetComponent<NodeKin>().RecursivelySetTraversed(traversed);
                 });
             });
+
+            if (copy) (copy as NodeKin).RecursivelySetTraversed(traversed);
         }
         private void RecursivelySetKinship(int kinIndex = 0, int seniority = 0, string fromKinship = "", NodeKin fromNode = null)
         {
@@ -132,6 +126,8 @@ namespace Omnis.Flowchart.Kinship
             outSlots[1].outLinks.ForEach((link) => {
                 link.toPoint.master.GetComponent<NodeKin>().RecursivelySetKinship(5, 0, myKinship);
             });
+
+            if (copy) (copy as NodeKin).RecursivelySetKinship(kinIndex, seniority, fromKinship, fromNode);
         }
         #endregion
     }

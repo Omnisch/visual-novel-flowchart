@@ -3,7 +3,7 @@ mergeInto(LibraryManager.library, {
       var query = UTF8ToString(queryPtr);
 
       if (typeof relationship !== "undefined") {
-          var resultArray = relationship({ text: query });
+          var resultArray = relationship({ text: query, mode: 'northern' });
           if (Array.isArray(resultArray)) {
             var resultStr = JSON.stringify(resultArray);
             var buffer = allocate(intArrayFromString(resultStr), 'i8', ALLOC_NORMAL);

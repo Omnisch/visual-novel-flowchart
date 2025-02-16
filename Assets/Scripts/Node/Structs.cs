@@ -22,6 +22,7 @@ namespace Omnis.Flowchart
     public struct NodeData
     {
         public Vector2 position;
+        public string pairHash;
         public int mode;
         public string description;
     }
